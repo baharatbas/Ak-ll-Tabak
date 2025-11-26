@@ -5,4 +5,9 @@
 //  Created by Bahar Atbaş on 25.10.2025.
 //
 
-import Foundation
+import SwiftUI
+import UIKit
+
+/*struct cameraView: UIViewControllerRepresentable{
+}*/
+

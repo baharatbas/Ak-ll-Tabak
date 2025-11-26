@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct personSıngIn: View{
+    @StateObject private var authViewModel = AuthViewModel()
     @State private var email = ""
     @State private var password = ""
+    @State private var isRegister = false
 
    var body: some View{
        VStack(spacing: 30){
@@ -34,21 +36,46 @@ struct personSıngIn: View{
                    .cornerRadius(10)
            }.padding(.horizontal)
            
-           Button(action: {
-                           // Kayıt işlemleri burada yapılacak
-                       }) {
-                           Text("Giriş Yap")
-                               .frame(maxWidth: .infinity)
-                               .padding()
-                               .background(Color.green)
-                               .foregroundColor(.white)
-                               .cornerRadius(10)
-                               .font(.headline)
+           VStack{
+               Button(action: {
+                   Task{
+                       await authViewModel.Login(email: email, password: password)
+                       
+                       if authViewModel.errorMessage.isEmpty{
+                           isRegister = true
                        }
-                       .padding(.horizontal)
+                   }
+               }) {
+                   Text("Giriş Yap")
+                       .frame(maxWidth: .infinity)
+                       .padding()
+                       .background(Color.green)
+                       .foregroundColor(.white)
+                       .cornerRadius(10)
+                       .font(.headline)
+               }
+               .padding(.horizontal)
+               NavigationLink(destination: HomeView(), isActive: $isRegister) {
+                   EmptyView()
+               }
+               HStack{
+                   Button(action: {
+                       
+                   }){
+                       Image(systemName: "g.circle.fill")
+                           .frame(width: 24, height: 24)
+                   }
+                   Button(action: {
+                       
+                   }){
+                       Image(systemName: "applelogo")
+                           .frame(width: 50, height: 50)
+                   }
+               }.foregroundStyle(Color.black)
+           }
        }
-   }
     }
+}
 
 #Preview {
     personSıngIn()

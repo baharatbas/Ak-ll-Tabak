@@ -9,7 +9,7 @@ import SwiftUI
 
 struct homeNavbar: View {
     var body: some View {
-        Text("home page")
+        HomeView()
     }
 }
 

@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct searchNavbar: View {
+    @State private var searchText = ""
+    let items = ["Elma", "Armut", "Muz", "Çilek", "Karpuz", "Kiraz"]
     var body: some View {
-        Text("arama sayfası")
+        NavigationView {
+                    VStack {
+                       
+                        
+
+                    }
+                    .navigationTitle("Arama")
+                    .searchable(text: $searchText, prompt: "Bir şey ara...")
+                }
+            
+        
     }
 }
 

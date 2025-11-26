@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="AkıllıTabak/AkıllıTabak-InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F1t"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>AkıllıTabak</source>
+        <target state="new">AkıllıTabak</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>Tabaktaki yiyecekleri algılamak için kamera erişimi gerekiyor.
+</source>
+        <target state="new">Tabaktaki yiyecekleri algılamak için kamera erişimi gerekiyor.
+</target>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Localication/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F1t"/>
+    </header>
+    <body>
+      <trans-unit id="%@ sayfası yakında 🍽️" xml:space="preserve">
+        <source>%@ sayfası yakında 🍽️</source>
+        <target>%@ sayfası yakında 🍽️</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="AKILLI TABAK" xml:space="preserve">
+        <source>AKILLI TABAK</source>
+        <target>AKILLI TABAK</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Akıllı Tabak" xml:space="preserve">
+        <source>Akıllı Tabak</source>
+        <target>Akıllı Tabak</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Ana Sayfa" xml:space="preserve">
+        <source>Ana Sayfa</source>
+        <target>Ana Sayfa</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Anasayfa" xml:space="preserve">
+        <source>Homepage</source>
+        <target>Homepage</target>
+        <note>Localizable.strings
+  AkıllıTabak
+
+  Created by Bahar Atbaş on 26.11.2025.</note>
+      </trans-unit>
+      <trans-unit id="Arama" xml:space="preserve">
+        <source>Search</source>
+        <target>Search</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Bir şey ara..." xml:space="preserve">
+        <source>Bir şey ara...</source>
+        <target>Bir şey ara...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="E-Posta" xml:space="preserve">
+        <source>E-Posta</source>
+        <target>E-Posta</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="E-Posta girin" xml:space="preserve">
+        <source>E-Posta girin</source>
+        <target>E-Posta girin</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Giriş Yap" xml:space="preserve">
+        <source>Giriş Yap</source>
+        <target>Giriş Yap</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Hesabım" xml:space="preserve">
+        <source/>
+        <target/>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Kategori" xml:space="preserve">
+        <source/>
+        <target/>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Kategoriler" xml:space="preserve">
+        <source>Kategoriler</source>
+        <target>Kategoriler</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Kayıt Ol" xml:space="preserve">
+        <source>Kayıt Ol</source>
+        <target>Kayıt Ol</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Sağlıklı beslenmenin akıllı yolu! 🌿" xml:space="preserve">
+        <source>Sağlıklı beslenmenin akıllı yolu! 🌿</source>
+        <target>Sağlıklı beslenmenin akıllı yolu! 🌿</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Şifre" xml:space="preserve">
+        <source>Şifre</source>
+        <target>Şifre</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Şifre girin" xml:space="preserve">
+        <source>Şifre girin</source>
+        <target>Şifre girin</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Zaten Hesabım Var Giriş Yap" xml:space="preserve">
+        <source>Zaten Hesabım Var Giriş Yap</source>
+        <target>Zaten Hesabım Var Giriş Yap</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="meatAI" xml:space="preserve">
+        <source>meatAI</source>
+        <target>meatAI</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="🍽️ Kategorilere Git" xml:space="preserve">
+        <source>🍽️ Kategorilere Git</source>
+        <target>🍽️ Kategorilere Git</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="🔍 Tarif Ara" xml:space="preserve">
+        <source>🔍 Tarif Ara</source>
+        <target>🔍 Tarif Ara</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="🥗 AkıllıTabak" xml:space="preserve">
+        <source>🥗 AkıllıTabak</source>
+        <target>🥗 AkıllıTabak</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

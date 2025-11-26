@@ -1,0 +1,37 @@
+/*
+  Localizable.strings
+  AkıllıTabak
+  Created by Bahar Atbaş on 26.11.2025.
+*/
+
+"Anasayfa" = "Homepage";
+"Arama" = "Search";
+"Kategori" = "Category";
+"Hesabım" = "My Account";
+
+"%@ sayfası yakında 🍽️" = "%@ page coming soon 🍽️";
+"🍽️ Kategorilere Git" = "🍽️ Go to Categories";
+"🔍 Tarif Ara" = "🔍 Search Recipes";
+"🥗 AkıllıTabak" = "🥗 SmartPlate";
+
+"Akıllı Tabak" = "Smart Plate";
+"AKILLI TABAK" = "SMART PLATE";
+
+"Ana Sayfa" = "Home";
+"Bir şey ara..." = "Search for something...";
+
+"E-Posta" = "Email";
+"E-Posta girin" = "Enter Email";
+
+"Giriş Yap" = "Login";
+"Kategoriler" = "Categories";
+"Kayıt Ol" = "Sign Up";
+
+"meatAI" = "meatAI";
+
+"Sağlıklı beslenmenin akıllı yolu! 🌿" = "The smart way to eat healthy! 🌿";
+
+"Şifre" = "Password";
+"Şifre girin" = "Enter Password";
+
+"Zaten Hesabım Var Giriş Yap" = "Already have an account? Login";

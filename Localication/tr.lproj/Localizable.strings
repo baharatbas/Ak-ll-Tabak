@@ -1,0 +1,38 @@
+/*
+  Localizable.strings (TR)
+  AkıllıTabak
+  Created by Bahar Atbaş on 26.11.2025.
+*/
+
+"Anasayfa" = "Anasayfa";
+"Arama" = "Arama";
+"Kategori" = "Kategori";
+"Hesabım" = "Hesabım";
+
+"%@ sayfası yakında 🍽️" = "%@ sayfası yakında 🍽️";
+
+"🍽️ Kategorilere Git" = "🍽️ Kategorilere Git";
+"🔍 Tarif Ara" = "🔍 Tarif Ara";
+"🥗 AkıllıTabak" = "🥗 AkıllıTabak";
+
+"Akıllı Tabak" = "Akıllı Tabak";
+"AKILLI TABAK" = "AKILLI TABAK";
+
+"Ana Sayfa" = "Ana Sayfa";
+"Bir şey ara..." = "Bir şey ara...";
+
+"E-Posta" = "E-Posta";
+"E-Posta girin" = "E-Posta girin";
+
+"Giriş Yap" = "Giriş Yap";
+"Kategoriler" = "Kategoriler";
+"Kayıt Ol" = "Kayıt Ol";
+
+"meatAI" = "meatAI";
+
+"Sağlıklı beslenmenin akıllı yolu! 🌿" = "Sağlıklı beslenmenin akıllı yolu! 🌿";
+
+"Şifre" = "Şifre";
+"Şifre girin" = "Şifre girin";
+
+"Zaten Hesabım Var Giriş Yap" = "Zaten hesabım var, giriş yap";
