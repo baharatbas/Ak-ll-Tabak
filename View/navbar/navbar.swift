@@ -6,7 +6,7 @@ struct Navbar: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                homeNavbar()
+                HomeView()
                     .tabItem {
                         Image(systemName: "house")
                         Text("Anasayfa")
@@ -15,8 +15,8 @@ struct Navbar: View {
 
                 searchNavbar()
                     .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Arama")
+                        Image(systemName: "receipt")
+                        Text("Analiz")
                     }
                     .tag(1)
 
@@ -26,10 +26,10 @@ struct Navbar: View {
                     }
                     .tag(2)
 
-                category()
+                Diyet()
                     .tabItem {
-                        Image(systemName: "receipt")
-                        Text("Kategori")
+                        Image(systemName: "fork.knife")
+                        Text("Diyet")
                     }
                     .tag(3)
 

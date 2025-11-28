@@ -36,7 +36,7 @@ struct HomeView: View {
                 
                 // Ana butonlar
                 VStack(spacing: 15) {
-                    NavigationLink(destination: category()) {
+                    NavigationLink(destination: Diyet()) {
                         Text("🍽️ Kategorilere Git")
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
