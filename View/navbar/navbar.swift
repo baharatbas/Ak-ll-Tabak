@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct Navbar: View {
-    @State private var selectedTab = 2 // Ortadaki tab (Akıllı Tabak)
+    @State private var selectedTab = 0 
 
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                HomeView()
+                homeNavbar()
                     .tabItem {
                         Image(systemName: "house")
                         Text("Anasayfa")
@@ -22,7 +22,7 @@ struct Navbar: View {
 
                 meatAI()
                     .tabItem {
-                        EmptyView() // burada boş bırakıyoruz, ortadaki butonu kendimiz ekleyeceğiz
+                        EmptyView()
                     }
                     .tag(2)
 

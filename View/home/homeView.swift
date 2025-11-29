@@ -7,65 +7,149 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct HomeView: View {
     var body: some View {
-        NavigationView {
-            VStack(spacing: 30) {
-                
-                // Uygulama başlığı
-                Text("🥗 AkıllıTabak")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.green)
-                    .padding(.top, 40)
-                
-                // Hoş geldin yazısı
-                Text("Sağlıklı beslenmenin akıllı yolu! 🌿")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-                
-                // Görsel (örnek)
-                Image(systemName: "leaf.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-                    .foregroundColor(.green.opacity(0.8))
-                    .padding()
-                
-                // Ana butonlar
-                VStack(spacing: 15) {
-                    NavigationLink(destination: Diyet()) {
-                        Text("🍽️ Kategorilere Git")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                HStack(spacing: 15) {
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading) {
+                        Text("Merhaba")
+                            .foregroundColor(.gray)
+                        Text("Bahar")
+                            .font(.title3)
                             .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                            .shadow(radius: 2)
                     }
                     
-                    NavigationLink(destination: searchNavbar()) {
-                        Text("🔍 Tarif Ara")
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                            .shadow(radius: 2)
+                    Spacer()
+                    
+                    Image(systemName: "bell")
+                        .font(.title3)
+                }
+                .padding(.horizontal)
+                
+                
+                // MARK: Search + Assistant Button
+                HStack {
+                    TextField("Describe your food", text: .constant(""))
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(25)
+                    
+                    Button(action: {}) {
+                        HStack {
+                            Text("Assistant")
+                            Image(systemName: "wand.and.sparkles")
+                        }
+                        .padding()
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
                     }
                 }
-                .padding(.horizontal, 40)
+                .padding(.horizontal)
                 
-                Spacer()
+                
+                // MARK: Categories
+                HStack {
+                    Text("Categories")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Text("See all")
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) {
+                        CategoryItem(name: "Vegan")
+                        CategoryItem(name: "Carb")
+                        CategoryItem(name: "Protein")
+                        CategoryItem(name: "Snacks")
+                        CategoryItem(name: "Drink")
+                    }
+                    .padding(.horizontal)
+                }
+                
+                
+                // MARK: Meals Grid Example
+                VStack(spacing: 20) {
+                    MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
+                    MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
+                    MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
+                    MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
+                }
+                .padding(.horizontal)
+                
             }
-            .navigationTitle("Ana Sayfa")
+            .padding(.vertical)
         }
     }
 }
+
+struct CategoryItem: View {
+    let name: String
+    
+    var body: some View {
+        VStack {
+            Circle()
+                .fill(Color(.systemGray5))
+                .frame(width: 70, height: 70)
+                .overlay(Image(systemName: "drink"))
+            
+            Text(name)
+                .font(.caption)
+        }
+    }
+}
+
+struct MealCardView: View {
+    let title: String
+    let kcal: Int
+    let image: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Image(image)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 150)
+                .clipped()
+                .cornerRadius(15)
+            
+            Text(title)
+                .fontWeight(.semibold)
+            
+            Text("\(kcal) kcal")
+                .foregroundColor(.gray)
+            
+            Button(action: {}) {
+                HStack {
+                    Image(systemName: "fork.knife")
+                    Text("Bana Tarifini Ver")
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.black)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+            }
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 3)
+    }
+}
+
+
 
 #Preview {
     HomeView()

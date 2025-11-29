@@ -14,7 +14,8 @@ struct personBarhome: View{
                 Image("akıllıTabak")
                     .resizable()
                     .scaledToFill()
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(edges: .top)
+                
                 
                 HStack(spacing: 20) {
                     NavigationLink(destination: personNavbar())  {
@@ -43,9 +44,12 @@ struct personBarhome: View{
                             )
                     }
                 }
-                .padding(.bottom, 50)
+                .padding(.bottom, 70)
             }
-        }}
+            .navigationBarHidden(true)
+            
+        }
+}
 }
 #Preview {
     personBarhome()
