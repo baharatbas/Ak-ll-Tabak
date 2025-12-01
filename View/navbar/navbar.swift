@@ -13,7 +13,7 @@ struct Navbar: View {
                     }
                     .tag(0)
 
-                searchNavbar()
+                analizNavbar()
                     .tabItem {
                         Image(systemName: "receipt")
                         Text("Analiz")

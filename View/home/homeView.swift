@@ -40,17 +40,19 @@ struct HomeView: View {
                     TextField("Describe your food", text: .constant(""))
                         .padding()
                         .background(Color(.systemGray6))
-                        .cornerRadius(25)
+                        .cornerRadius(15)
                     
-                    Button(action: {}) {
-                        HStack {
-                            Text("Assistant")
-                            Image(systemName: "wand.and.sparkles")
+                    NavigationStack{
+                        NavigationLink(destination: ChatBotView()) {
+                            HStack {
+                                Text("Assistant")
+                                Image(systemName: "wand.and.sparkles")
+                            }
+                            .padding()
+                            .background(Color.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
                         }
-                        .padding()
-                        .background(Color.black)
-                        .foregroundColor(.white)
-                        .cornerRadius(25)
                     }
                 }
                 .padding(.horizontal)
