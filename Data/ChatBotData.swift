@@ -11,4 +11,5 @@ struct Message: Identifiable{
     let id = UUID()
     let text: String
     let isUser: Bool
+    //burada true olması kullanıcı cevabını olduğunu söyler false olması gemini cevabı olduğunu gösterir bize
 }

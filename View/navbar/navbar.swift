@@ -47,7 +47,7 @@ struct Navbar: View {
             }) {
                 VStack {
                     Image(systemName: "camera.viewfinder")
-                        .font(.system(size: 25))
+                        .font(.system(size: 20))
                         .foregroundColor(.white)
                         .padding()
                         .background(Circle().fill(Color.green).shadow(radius: 4))
@@ -57,7 +57,7 @@ struct Navbar: View {
                         .bold()
                 }
             }
-            .offset(y:1) // ikon biraz yukarıda dursun
+            .offset(y:4) // ikon biraz yukarıda dursun
         }
         .accentColor(.green)
     }

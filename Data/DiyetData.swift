@@ -13,4 +13,5 @@ struct Dıyet: Identifiable {
        let describe: String
        let image: String
        let color: Color
+       let type: DietType
 }

@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821178572F2D00C80097C54B /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 821178562F2D00C80097C54B /* Secrets.xcconfig */; };
 		8236A0712EAFB8F70027C79F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8236A0702EAFB8F70027C79F /* GoogleService-Info.plist */; };
 		824712632EB0D165001D5F01 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 824712622EB0D165001D5F01 /* FirebaseAuth */; };
 		8247126C2EB137F5001D5F01 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247126B2EB137F5001D5F01 /* GoogleService-Info-3.plist */; };
 		8247126F2EB1388C001D5F01 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8247126E2EB1388C001D5F01 /* GoogleSignIn */; };
 		824712712EB1388C001D5F01 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 824712702EB1388C001D5F01 /* GoogleSignInSwift */; };
+		82AD09FB2F31013900B5A130 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 82AD09FA2F31013500B5A130 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,17 +34,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		821178562F2D00C80097C54B /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		8236A0702EAFB8F70027C79F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8247126B2EB137F5001D5F01 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 		8266D4DF2E9EBB2C007F6972 /* AkıllıTabak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AkıllıTabak.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8266D4EC2E9EBB2D007F6972 /* AkıllıTabakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AkıllıTabakTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8266D4F62E9EBB2D007F6972 /* AkıllıTabakUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AkıllıTabakUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82AD09FA2F31013500B5A130 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		823A53392F2534D1000C846C /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Services;
+			sourceTree = "<group>";
+		};
 		823F751D2ED77C7500F7A15B /* Localication */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Localication;
+			sourceTree = "<group>";
+		};
+		82463F8E2F2A0DC300DDC55F /* Diets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Diets;
 			sourceTree = "<group>";
 		};
 		8266D4E12E9EBB2C007F6972 /* AkıllıTabak */ = {
@@ -113,6 +127,10 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				82AD09FA2F31013500B5A130 /* .gitignore */,
+				821178562F2D00C80097C54B /* Secrets.xcconfig */,
+				82463F8E2F2A0DC300DDC55F /* Diets */,
+				823A53392F2534D1000C846C /* Services */,
 				823F751D2ED77C7500F7A15B /* Localication */,
 				82E586A52E9FF8DE0056BCB5 /* App */,
 				82E586A42E9FF8D80056BCB5 /* Model */,
@@ -153,7 +171,9 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				823A53392F2534D1000C846C /* Services */,
 				823F751D2ED77C7500F7A15B /* Localication */,
+				82463F8E2F2A0DC300DDC55F /* Diets */,
 				8266D4E12E9EBB2C007F6972 /* AkıllıTabak */,
 				82E586A22E9FF8510056BCB5 /* Data */,
 				82E586A32E9FF8580056BCB5 /* View */,
@@ -271,8 +291,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				821178572F2D00C80097C54B /* Secrets.xcconfig in Resources */,
 				8247126C2EB137F5001D5F01 /* GoogleService-Info-3.plist in Resources */,
 				8236A0712EAFB8F70027C79F /* GoogleService-Info.plist in Resources */,
+				82AD09FB2F31013900B5A130 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
