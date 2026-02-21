@@ -80,8 +80,10 @@ struct HomeView: View {
                     
                     // MARK: Meals
                     VStack(spacing: 20) {
-                        MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
-                        MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
+                        MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2", type: .omelette)
+                        MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1", type: .chicken)
+                        MealCardView(title: "Avacado Toast", kcal: 350, image: "avocadotoast", type: .avacado)
+                        MealCardView(title: "Quinoa Veggie", kcal: 400, image: "quinoabowl", type: .quinoa)
                     }
                     .padding(.horizontal)
                     
@@ -140,6 +142,7 @@ struct MealCardView: View {
     let title: String
     let kcal: Int
     let image: String
+    let type: MealType
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -156,7 +159,7 @@ struct MealCardView: View {
             Text("\(kcal) kcal")
                 .foregroundColor(.gray)
             
-            Button(action: {}) {
+           NavigationLink(destination: destinationView()){
                 HStack {
                     Image(systemName: "fork.knife")
                     Text("Bana Tarifini Ver")
@@ -173,6 +176,30 @@ struct MealCardView: View {
         .cornerRadius(20)
         .shadow(radius: 3)
     }
+    
+    @ViewBuilder
+    private func destinationView() -> some View {
+        switch type {
+        case .omelette:
+            HerbOmelette()
+        case .chicken:
+            ChickenSalad()
+        case .avacado:
+            AvocadoToastView()
+        case .quinoa:
+            QuinoaVeggieView()
+        default:
+            Text("Tarif Bulunamadı")
+            
+        }
+    }
+}
+
+enum MealType {
+    case chicken
+    case omelette
+    case avacado
+    case quinoa
 }
 
 #Preview {

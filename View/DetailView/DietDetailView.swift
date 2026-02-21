@@ -27,5 +27,6 @@ struct DietDetailView: View {
         }
         .navigationTitle(diet.name)
         .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
