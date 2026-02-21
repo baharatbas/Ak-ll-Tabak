@@ -15,7 +15,7 @@ struct Navbar: View {
 
                 analizNavbar()
                     .tabItem {
-                        Image(systemName: "receipt")
+                        Image(systemName: "person.text.rectangle")
                         Text("Analiz")
                     }
                     .tag(1)
@@ -26,10 +26,10 @@ struct Navbar: View {
                     }
                     .tag(2)
 
-                Diyet()
+                DoctorsCard()
                     .tabItem {
-                        Image(systemName: "fork.knife")
-                        Text("Diyet")
+                        Image(systemName: "stethoscope")
+                        Text("Danışman")
                     }
                     .tag(3)
 
@@ -53,7 +53,7 @@ struct Navbar: View {
                         .background(Circle().fill(Color.green).shadow(radius: 4))
                     Text("Akıllı Tabak")
                         .font(.caption)
-                        .foregroundColor(selectedTab == 2 ? .green : .gray)
+                        .foregroundColor(selectedTab == 2 ? .green : .black)
                         .bold()
                 }
             }

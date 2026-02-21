@@ -94,6 +94,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		82FFF9502F43B232000FD844 /* Recipes */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Recipes;
+			sourceTree = "<group>";
+		};
+		82FFF9552F43B879000FD844 /* Doctors */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Doctors;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +137,8 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				82FFF9552F43B879000FD844 /* Doctors */,
+				82FFF9502F43B232000FD844 /* Recipes */,
 				82AD09FA2F31013500B5A130 /* .gitignore */,
 				821178562F2D00C80097C54B /* Secrets.xcconfig */,
 				82463F8E2F2A0DC300DDC55F /* Diets */,
@@ -179,6 +191,8 @@
 				82E586A32E9FF8580056BCB5 /* View */,
 				82E586A42E9FF8D80056BCB5 /* Model */,
 				82E586A52E9FF8DE0056BCB5 /* App */,
+				82FFF9502F43B232000FD844 /* Recipes */,
+				82FFF9552F43B879000FD844 /* Doctors */,
 			);
 			name = "AkıllıTabak";
 			packageProductDependencies = (

@@ -14,7 +14,7 @@ struct personBarhome: View{
                 Image("akıllıTabak")
                     .resizable()
                     .scaledToFill()
-                    .ignoresSafeArea(edges: .top)
+                    .ignoresSafeArea(edges: .all)
                 
                 
                 HStack(spacing: 20) {

@@ -1,48 +1,46 @@
-//
-//  homeView.swift
-//  AkıllıTabak
-//
-//  Created by Bahar Atbaş on 24.10.2025.
-//
-
-import SwiftUI
 
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(spacing: 15) {
-                    Image("profile")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
+        
+        NavigationStack {
+            
+            ScrollView {
+                
+                VStack(alignment: .leading, spacing: 25) {
                     
-                    VStack(alignment: .leading) {
-                        Text("Merhaba")
-                            .foregroundColor(.gray)
-                        Text("Bahar")
+                    // MARK: Header
+                    HStack(spacing: 15) {
+                        Image("profile1")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                        
+                        VStack(alignment: .leading) {
+                            Text("Merhaba")
+                                .foregroundColor(.gray)
+                            Text("Bahar")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "bell")
                             .font(.title3)
-                            .fontWeight(.semibold)
                     }
+                    .padding(.horizontal)
                     
-                    Spacer()
                     
-                    Image(systemName: "bell")
-                        .font(.title3)
-                }
-                .padding(.horizontal)
-                
-                
-                // MARK: Search + Assistant Button
-                HStack {
-                    TextField("Describe your food", text: .constant(""))
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(15)
-                    
-                    NavigationStack{
+                    // MARK: Search + Assistant
+                    HStack {
+                        TextField("Describe your food", text: .constant(""))
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(15)
+                        
                         NavigationLink(destination: ChatBotView()) {
                             HStack {
                                 Text("Assistant")
@@ -54,57 +52,83 @@ struct HomeView: View {
                             .cornerRadius(15)
                         }
                     }
-                }
-                .padding(.horizontal)
-                
-                
-                // MARK: Categories
-                HStack {
-                    Text("Categories")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    Spacer()
-                    Text("See all")
-                        .foregroundColor(.gray)
-                }
-                .padding(.horizontal)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        CategoryItem(name: "Vegan")
-                        CategoryItem(name: "Carb")
-                        CategoryItem(name: "Protein")
-                        CategoryItem(name: "Snacks")
-                        CategoryItem(name: "Drink")
+                    .padding(.horizontal)
+                    
+                    
+                    // MARK: Categories
+                    HStack {
+                        Text("Categories")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Spacer()
+                        Text("See all")
+                            .foregroundColor(.gray)
                     }
                     .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            CategoryItem(name: "Vegan", imageName: "drink1")
+                            CategoryItem(name: "Carb", imageName: "grad")
+                            CategoryItem(name: "Protein", imageName: "protein")
+                            CategoryItem(name: "Snacks", imageName: "snak")
+                            CategoryItem(name: "Drink", imageName: "drink1")
+                        }
+                        .padding(.horizontal)
+                    }
+                    
+                    
+                    // MARK: Meals
+                    VStack(spacing: 20) {
+                        MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
+                        MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
+                    }
+                    .padding(.horizontal)
+                    
+                    
+                    // MARK: Diets Section
+                    HStack {
+                        Text("Diets")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: Diyet()) {
+                            Text("See all")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .padding(.horizontal)
+                    Diyet(limit: 10)
+                        .padding(.horizontal)
                 }
-                
-                
-                // MARK: Meals Grid Example
-                VStack(spacing: 20) {
-                    MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
-                    MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
-                    MealCardView(title: "Chicken Salad", kcal: 480, image: "meal1")
-                    MealCardView(title: "Herb Omelette", kcal: 300, image: "meal2")
-                }
-                .padding(.horizontal)
-                
+                .padding(.vertical)
             }
-            .padding(.vertical)
         }
     }
 }
 
+
+
+
 struct CategoryItem: View {
     let name: String
+    let imageName: String
     
     var body: some View {
         VStack {
             Circle()
                 .fill(Color(.systemGray5))
                 .frame(width: 70, height: 70)
-                .overlay(Image(systemName: "drink"))
+                .overlay(
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35, height: 35)
+                    
+                    )
+            
             
             Text(name)
                 .font(.caption)
@@ -151,9 +175,6 @@ struct MealCardView: View {
     }
 }
 
-
-
 #Preview {
     HomeView()
 }
-
