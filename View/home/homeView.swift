@@ -1,3 +1,8 @@
+//
+//
+//
+
+
 
 import SwiftUI
 
@@ -100,9 +105,10 @@ struct HomeView: View {
                             Text("See all")
                                 .foregroundColor(.gray)
                         }
+                        .buttonStyle(.plain)
                     }
                     .padding(.horizontal)
-                    Diyet(limit: 10)
+                    Diyet(limit: 3)
                         .padding(.horizontal)
                 }
                 .padding(.vertical)

@@ -8,56 +8,106 @@
 import SwiftUI
 
 struct DoctorsCard: View {
+    
+    let doctors: [Doctor] = [
+        Doctor(
+            name: "Dr. Bahar Atbaş",
+            title: "Diyetisyen",
+            price: 750,
+            description: "Online ve yüz yüze danışmanlık hizmeti vermektedir.",
+            image: "profile1"
+        ),
+        Doctor(
+            name: "Dr. Baran Can Atbaş",
+            title: "Uzman Diyetisyen",
+            price: 900,
+            description: "Sporcu beslenmesi alanında uzmanlaşmıştır.",
+            image: "profile4"
+        ),
+        Doctor(
+            name: "Dr. Lara Çetrez",
+            title: "Diyetisyen",
+            price: 800,
+            description: "Kilo kontrolü ve metabolizma üzerine çalışmaktadır.",
+            image: "profile3"
+        ),
+        Doctor(
+            name: "Dr. Umay Gençer",
+            title: "Intern Diyetisyen",
+            price: 550,
+            description: "Sporcu beslenmesi alanında uzmanlaşmıştır.",
+            image: "profile5"
+        ),
+        Doctor(
+            name: "Dr. Seda Yılmaz",
+            title: "Diyetisyen",
+            price: 950,
+            description: "Kilo kontrolü ve metabolizma üzerine çalışmaktadır.",
+            image: "profile6"
+        ),
+        Doctor(
+            name: "Dr. Ülkü Arslan",
+            title: "Diyetisyen",
+            price: 950,
+            description: "Kilo kontrolü ve metabolizma üzerine çalışmaktadır.",
+            image: "profile7"
+        ),
+        Doctor(
+            name: "Dr. Kenan Yıldız",
+            title: "Diyetisyen",
+            price: 950,
+            description: "Kilo kontrolü ve metabolizma üzerine çalışmaktadır.",
+            image: "profile8"
+        ),
+        Doctor(
+            name: "Dr. Fatmanur Gücek",
+            title: "Diyetisyen",
+            price: 950,
+            description: "Kilo kontrolü ve metabolizma üzerine çalışmaktadır.",
+            image: "profile9"
+        )
+    ]
+    
     var body: some View {
-        ScrollView{
-            DoctorCardView(name: "Dr. BAHAR ATBAŞ", title: "Dr. BAHAR ATBAŞ", image: "profile1")
-            DoctorCardView(name: "Dr. Baran Can Atbaş", title: "Dr. Baran Can ATBAŞ", image: "profile4")
-            DoctorCardView(name: "Dr. Lara Çetrez", title: "Dr. Lara Çetrez", image: "profile3")
-            DoctorCardView(name: "Dr. Beyza Konuker", title: "Dr. Beyza Konuker", image: "profile2")
-            DoctorCardView(name: "Dr. Ece Yalçın", title: "Dr. Ece Yalçın", image: "profile5")
-            DoctorCardView(name: "Dr. İrem Şimşek", title: "Dr. İrem Şimşek", image: "profile6")
-            DoctorCardView(name: "Dr. Umay Gençer", title: "Dr. Umay Gençer", image: "profile7")
-            DoctorCardView(name: "Dr. İlter Güneş", title: "Dr. İlter Güneş", image: "profile8")
-            DoctorCardView(name: "Dr. Sedef Korkmaz", title: "Dr. Sedef Korkmaz", image: "profile9")
-        }.padding()
+        NavigationStack {
+            ScrollView {
+                ForEach(doctors) { doctor in
+                    DoctorCardView(doctor: doctor)
+                }
+            }
+            .navigationTitle("Diyetisyenler")
+        }
     }
 }
 
 struct DoctorCardView: View {
     
-    let name: String
-    let title: String
-    let image: String
+    let doctor: Doctor
     
     var body: some View {
         
         HStack(alignment: .center, spacing: 16) {
             
-            // MARK: - Profil Foto
-            Image(image)
+            Image(doctor.image)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 60, height: 60)
                 .clipShape(Circle())
             
-            // MARK: - Ünvan + İsim
             VStack(alignment: .leading, spacing: 4) {
                 
-                Text(title) // Diyetisyen
+                Text(doctor.title)
                     .font(.caption)
                     .foregroundColor(.gray)
                 
-                Text(name) // Dr. Bahar Atbaş
+                Text(doctor.name)
                     .font(.headline)
                     .fontWeight(.semibold)
             }
             
             Spacer()
             
-            // MARK: - İncele Butonu
-            Button(action: {
-                // action
-            }) {
+            NavigationLink(destination: DoctorPreview(doctor: doctor)) {
                 Text("İNCELE")
                     .font(.subheadline)
                     .fontWeight(.semibold)

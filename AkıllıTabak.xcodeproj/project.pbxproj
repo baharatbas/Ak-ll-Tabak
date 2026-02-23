@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		821178572F2D00C80097C54B /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 821178562F2D00C80097C54B /* Secrets.xcconfig */; };
 		8236A0712EAFB8F70027C79F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8236A0702EAFB8F70027C79F /* GoogleService-Info.plist */; };
 		824712632EB0D165001D5F01 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 824712622EB0D165001D5F01 /* FirebaseAuth */; };
 		8247126C2EB137F5001D5F01 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8247126B2EB137F5001D5F01 /* GoogleService-Info-3.plist */; };
@@ -258,7 +257,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					8266D4DE2E9EBB2C007F6972 = {
 						CreatedOnToolsVersion = 16.4;
@@ -305,7 +304,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				821178572F2D00C80097C54B /* Secrets.xcconfig in Resources */,
 				8247126C2EB137F5001D5F01 /* GoogleService-Info-3.plist in Resources */,
 				8236A0712EAFB8F70027C79F /* GoogleService-Info.plist in Resources */,
 				82AD09FB2F31013900B5A130 /* .gitignore in Resources */,
@@ -426,6 +424,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -484,6 +483,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};

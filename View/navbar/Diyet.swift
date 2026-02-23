@@ -18,41 +18,41 @@ struct Diyet: View {
     ]
     
     var body: some View {
-        
-        VStack(spacing: 20) {
-            
-            ForEach(displayedDiet) { diets in
+        ScrollView{
+            VStack(spacing: 20) {
                 
-                NavigationLink(destination: destinationView(for: diets.type)) {
+                ForEach(displayedDiet) { diets in
                     
-                    HStack(spacing: 15) {
+                    NavigationLink(destination: destinationView(for: diets.type)) {
                         
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(diets.name)
-                                .font(.headline)
-                                .foregroundColor(.white)
+                        HStack(spacing: 15) {
                             
-                            Text(diets.describe)
-                                .font(.system(size: 13))
-                                .foregroundColor(.white.opacity(0.9))
-                                .lineLimit(2)
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(diets.name)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                
+                                Text(diets.describe)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.white.opacity(0.9))
+                                    .lineLimit(2)
+                            }
+                            
+                            Spacer()
+                            
+                            Image(diets.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 90, height: 90)
+                                .clipShape(Circle())
                         }
-                        
-                        Spacer()
-                        
-                        Image(diets.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 90, height: 90)
-                            .clipShape(Circle())
+                        .padding()
+                        .background(diets.color.opacity(0.8))
+                        .cornerRadius(25)
                     }
-                    .padding()
-                    .background(diets.color.opacity(0.8))
-                    .cornerRadius(25)
                 }
-            }
-        }
-    }
+            }.padding()
+        }}
     
     private var displayedDiet: [Dıyet] {
         if let limit {
