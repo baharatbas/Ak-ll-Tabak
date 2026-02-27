@@ -31,6 +31,17 @@ struct DoctorPreview: View {
                     Text(doctor.description)
                         .padding()
                         .multilineTextAlignment(.center)
+            Button(action: {
+                
+            }){Text("Seans Al")}
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 10)
+                .background(Color.green)
+                .foregroundColor(.white)
+                .cornerRadius(16)
+          
                     
                     Spacer()
                 }
