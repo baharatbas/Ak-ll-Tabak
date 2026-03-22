@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct personNavbar: View {
-    @StateObject private var authViewModel = AuthViewModel()
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
-    @State private var isRegister = false
+    @State private var username = ""
     
     
     var body: some View {
-        NavigationView{
+        NavigationStack {
             VStack(spacing: 30){
                 Text("AKILLI TABAK")
                     .bold()
                     .font(.title)
                 //Text("KAYIT OL")
                 VStack(alignment: .leading, spacing: 15) {
+                    Text("Kullanıcı Adı")
+                        .font(.headline)
+                    TextField("Kullanıcı adı girin", text: $username)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+
                     Text("E-Posta")
                         .font(.headline)
                     TextField("E-Posta girin", text: $email)
@@ -39,14 +45,9 @@ struct personNavbar: View {
                 }.padding(.horizontal)
                 
                 Button(action: {
-                    Task{
-                        await authViewModel.register(email: email, password: password)
-                        
-                        if authViewModel.errorMessage.isEmpty{
-                            isRegister = true
-                        }
+                    Task {
+                        await authViewModel.register(email: email, password: password, username: username)
                     }
-                    
                 }) {
                     Text("Kayıt Ol")
                         .frame(maxWidth: .infinity)
@@ -63,6 +64,13 @@ struct personNavbar: View {
                         Text("Zaten Hesabım Var Giriş Yap")
                     }
                     .foregroundColor(.gray)
+                    if !authViewModel.errorMessage.isEmpty {
+                        Text(authViewModel.errorMessage)
+                            .font(.footnote)
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
                     HStack{
                         Button(action: {
                             
@@ -83,5 +91,6 @@ struct personNavbar: View {
 }
 #Preview {
     personNavbar()
+        .environmentObject(AuthViewModel())
 }
 

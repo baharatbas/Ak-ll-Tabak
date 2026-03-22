@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct personSıngIn: View{
-    @StateObject private var authViewModel = AuthViewModel()
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
-    @State private var isRegister = false
 
    var body: some View{
        VStack(spacing: 30){
@@ -39,11 +38,7 @@ struct personSıngIn: View{
            VStack{
                Button(action: {
                    Task{
-                       await authViewModel.Login(email: email, password: password)
-                       
-                       if authViewModel.errorMessage.isEmpty{
-                           isRegister = true
-                       }
+                       await authViewModel.login(email: email, password: password)
                    }
                }) {
                    Text("Giriş Yap")
@@ -55,8 +50,12 @@ struct personSıngIn: View{
                        .font(.headline)
                }
                .padding(.horizontal)
-               NavigationLink(destination: HomeView(), isActive: $isRegister) {
-                   EmptyView()
+               if !authViewModel.errorMessage.isEmpty {
+                   Text(authViewModel.errorMessage)
+                       .font(.footnote)
+                       .foregroundColor(.red)
+                       .multilineTextAlignment(.center)
+                       .padding(.horizontal)
                }
                HStack{
                    Button(action: {
@@ -79,5 +78,6 @@ struct personSıngIn: View{
 
 #Preview {
     personSıngIn()
+        .environmentObject(AuthViewModel())
     
 }

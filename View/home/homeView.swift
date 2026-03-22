@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
     var body: some View {
         
         NavigationStack {
@@ -26,7 +27,7 @@ struct HomeView: View {
                         VStack(alignment: .leading) {
                             Text("Merhaba")
                                 .foregroundColor(.gray)
-                            Text("Bahar")
+                            Text(authViewModel.displayName.isEmpty ? "Kullanıcı" : authViewModel.displayName)
                                 .font(.title3)
                                 .fontWeight(.semibold)
                         }
@@ -210,4 +211,5 @@ enum MealType {
 
 #Preview {
     HomeView()
+        .environmentObject(AuthViewModel())
 }

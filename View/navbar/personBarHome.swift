@@ -8,49 +8,56 @@
 import SwiftUI
 
 struct personBarhome: View{
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
     var body: some View {
         NavigationStack{
-            ZStack(alignment: .bottom) {
-                Image("akıllıTabak")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea(edges: .all)
-                
-                
-                HStack(spacing: 20) {
-                    NavigationLink(destination: personNavbar())  {
-                        Text("Kayıt Ol")
-                            .frame(width: 140, height: 45)
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                            .fontWeight(.semibold)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.green, lineWidth: 2)
-                            )
+            Group {
+                if authViewModel.user == nil {
+                    ZStack(alignment: .bottom) {
+                        Image("akıllıTabak")
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea(edges: .all)
+
+                        HStack(spacing: 20) {
+                            NavigationLink(destination: personNavbar())  {
+                                Text("Kayıt Ol")
+                                    .frame(width: 140, height: 45)
+                                    .background(Color.green)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(12)
+                                    .fontWeight(.semibold)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.green, lineWidth: 2)
+                                    )
+                            }
+
+                            NavigationLink(destination: personSıngIn()) {
+                                Text("Giriş Yap")
+                                    .frame(width: 140, height: 45)
+                                    .background(Color.white)
+                                    .foregroundColor(.green)
+                                    .cornerRadius(12)
+                                    .fontWeight(.semibold)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.green, lineWidth: 2)
+                                    )
+                            }
+                        }
+                        .padding(.bottom, 70)
                     }
-                    
-                    NavigationLink(destination: personSıngIn()) {
-                        Text("Giriş Yap")
-                            .frame(width: 140, height: 45)
-                            .background(Color.white)
-                            .foregroundColor(.green)
-                            .cornerRadius(12)
-                            .fontWeight(.semibold)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.green, lineWidth: 2)
-                            )
-                    }
+                } else {
+                    sıngınUser()
                 }
-                .padding(.bottom, 70)
             }
             .navigationBarHidden(true)
-            
         }
-}
+    }
 }
 #Preview {
     personBarhome()
+        .environmentObject(AuthViewModel())
 }

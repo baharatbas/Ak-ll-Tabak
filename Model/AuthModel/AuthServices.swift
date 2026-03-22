@@ -35,6 +35,16 @@ final class AuthServices {
         //giriş yapan kullanıcıyı alıyoruz
         return result.user
     }
+
+    //Kullanici profil adini güncelleme
+    func updateDisplayName(_ username: String, for user: User) async throws {
+        let trimmed = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        let changeRequest = user.createProfileChangeRequest()
+        changeRequest.displayName = trimmed
+        try await changeRequest.commitChanges()
+    }
     
     //Çıkış yapma fonksiyonu
     func logoutUser() async throws {

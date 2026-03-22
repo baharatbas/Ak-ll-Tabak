@@ -89,7 +89,7 @@ struct meatAI: View {
 
                 ZStack {
                     Circle()
-                        .fill(Color.white.opacity(0.15))
+                        .fill(Color.gray.opacity(0.35))
                         .frame(width: 64, height: 64)
 
                     Image(systemName: "camera.viewfinder")
@@ -122,7 +122,7 @@ struct meatAI: View {
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                .stroke(Color.gray.opacity(0.35), lineWidth: 1)
         )
     }
 
@@ -156,7 +156,7 @@ struct meatAI: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
-        .background(Color.white.opacity(0.12))
+        .background(Color.gray.opacity(0.35))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
