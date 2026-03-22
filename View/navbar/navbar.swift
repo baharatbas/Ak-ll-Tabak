@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Navbar: View {
-    @State private var selectedTab = 0 
+    @State private var selectedTab = 0
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -41,23 +41,24 @@ struct Navbar: View {
                     .tag(4)
             }
 
-            // Ortadaki büyük ikon
-            Button(action: {
-                selectedTab = 2
-            }) {
-                VStack {
-                    Image(systemName: "camera.viewfinder")
-                        .font(.system(size: 20))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Circle().fill(Color.green).shadow(radius: 4))
-                    Text("Akıllı Tabak")
-                        .font(.caption)
-                        .foregroundColor(selectedTab == 2 ? .green : .black)
-                        .bold()
+                Button(action: {
+                    selectedTab = 2
+                }) {
+                    VStack {
+                        Image(systemName: "camera.viewfinder")
+                            .font(.system(size: 20))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Circle().fill(Color.green).shadow(radius: 4))
+
+                        Text("Akıllı Tabak")
+                            .font(.caption)
+                            .foregroundColor(.black)
+                            .bold()
+                    }
                 }
-            }
-            .offset(y:4) // ikon biraz yukarıda dursun
+                .offset(y: 4)
+            
         }
         .accentColor(.green)
     }

@@ -5,13 +5,9 @@
 //  Created by Bahar Atbaş on 30.11.2025.
 //
 
-import Foundation
-import SwiftUI
 import SwiftUI
 struct ChatBotView: View {
-   
-
-        @StateObject private var viewModel = ChatViewModel()
+    @StateObject private var viewModel = ChatViewModel()
 
         var body: some View {
             VStack {
@@ -48,6 +44,9 @@ struct ChatBotView: View {
                 }
                 .padding()
             }
+            .navigationTitle("ChatBot AI")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden , for: .tabBar)
         }
     }
 
