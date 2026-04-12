@@ -1,40 +1,63 @@
-"Anasayfa" = "Page d’accueil";
-"Arama" = "Recherche";
-"Kategori" = "Catégorie";
-"Hesabım" = "Mon compte";
+"home" = "Accueil";
+"search" = "Recherche";
+"category" = "Catégorie";
+"account" = "Mon compte";
 
-"%@ sayfası yakında 🍽️" = "La page %@ arrive bientôt 🍽️";
+"coming_soon" = "La page %@ arrive bientôt 🍽️";
 
-"🍽️ Kategorilere Git" = "🍽️ Aller aux Catégories";
+"go_to_categories" = "🍽️ Aller aux catégories";
+"search_recipe" = "🔍 Rechercher des recettes";
+"app_name_emoji" = "🥗 SmartPlate";
 
-"🔍 Tarif Ara" = "🔍 Rechercher des Recettes";
+"app_name" = "Smart Plate";
+"app_name_upper" = "SMART PLATE";
 
-"🥗 AkıllıTabak" = "🥗 SmartPlate";
+"search_placeholder" = "Rechercher quelque chose...";
 
-"Akıllı Tabak" = "Smart Plate";
+"email" = "E-mail";
+"email_placeholder" = "Entrez votre e-mail";
 
-"AKILLI TABAK" = "SMART PLATE";
-
-"Ana Sayfa" = "Accueil";
-
-"Bir şey ara..." = "Rechercher quelque chose...";
-
-"E-Posta" = "E-mail";
-
-"E-Posta girin" = "Entrez votre e-mail";
-
-"Giriş Yap" = "Connexion";
-
-"Kategoriler" = "Catégories";
-
-"Kayıt Ol" = "S’inscrire";
+"login" = "Connexion";
+"categories" = "Catégories";
+"signup" = "S’inscrire";
 
 "meatAI" = "meatAI";
 
-"Sağlıklı beslenmenin akıllı yolu! 🌿" = "La façon intelligente de manger sainement ! 🌿";
+"slogan" = "La façon intelligente de manger sainement ! 🌿";
 
-"Şifre" = "Mot de passe";
+"password" = "Mot de passe";
+"password_placeholder" = "Entrez votre mot de passe";
 
-"Şifre girin" = "Entrez votre mot de passe";
+"already_have_account" = "J’ai déjà un compte, connexion";
 
-"Zaten Hesabım Var Giriş Yap" = "J’ai déjà un compte, Connexion";
+"select_image_source" = "Choisir la source de l’image";
+"camera" = "Caméra";
+"gallery_select" = "Choisir depuis la galerie";
+"cancel" = "Annuler";
+
+"camera_not_available" = "Caméra indisponible";
+"camera_not_found_message" = "Aucune caméra trouvée sur cet appareil. Testez sur un vrai iPhone.";
+"gallery_not_available" = "Impossible d’ouvrir la galerie";
+"gallery_access_error" = "Impossible d’accéder à la galerie photo.";
+
+"meatAI_description" = "Scannez votre repas avec la caméra ou choisissez une photo depuis la galerie, puis lancez l’analyse intelligente.";
+"add_photo" = "Ajouter une photo";
+"tip_text" = "Astuce : vous pouvez prendre une photo instantanément ou en choisir une existante.";
+
+"instant_capture" = "Capture instantanée";
+"instant_capture_desc" = "Prendre une photo avec la caméra";
+"gallery_selection" = "Sélection de la galerie";
+"gallery_selection_desc" = "Télécharger une photo existante";
+
+"how_it_works" = "Comment ça marche ?";
+"step_1" = "Choisissez la caméra ou la galerie";
+"step_2" = "Ajoutez l’image du repas";
+"step_3" = "Envoyez pour analyse et attendez le résultat";
+
+"image_preview" = "Aperçu de l’image";
+"no_image_selected" = "Aucune image sélectionnée";
+"select_image_hint" = "Prenez une photo ou choisissez-en une depuis la galerie";
+
+"select_image" = "Choisir une image";
+"change_image" = "Modifier l’image";
+"analyze" = "Analyser";

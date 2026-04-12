@@ -1,38 +1,66 @@
-/*
-  Localizable.strings (TR)
-  AkıllıTabak
-  Created by Bahar Atbaş on 26.11.2025.
-*/
 
-"Anasayfa" = "Anasayfa";
-"Arama" = "Arama";
-"Kategori" = "Kategori";
-"Hesabım" = "Hesabım";
 
-"%@ sayfası yakında 🍽️" = "%@ sayfası yakında 🍽️";
+"home_tab" = "Anasayfa";
+"search_tab" = "Arama";
+"category_tab" = "Kategori";
+"account_tab" = "Hesabım";
 
-"🍽️ Kategorilere Git" = "🍽️ Kategorilere Git";
-"🔍 Tarif Ara" = "🔍 Tarif Ara";
-"🥗 AkıllıTabak" = "🥗 AkıllıTabak";
+"coming_soon" = "%@ sayfası yakında 🍽️";
 
-"Akıllı Tabak" = "Akıllı Tabak";
-"AKILLI TABAK" = "AKILLI TABAK";
+"go_to_categories" = "🍽️ Kategorilere Git";
+"search_recipe" = "🔍 Tarif Ara";
+"app_name_emoji" = "🥗 AkıllıTabak";
 
-"Ana Sayfa" = "Ana Sayfa";
-"Bir şey ara..." = "Bir şey ara...";
+"app_name" = "Akıllı Tabak";
+"app_name_upper" = "AKILLI TABAK";
 
-"E-Posta" = "E-Posta";
-"E-Posta girin" = "E-Posta girin";
+"home_title" = "Ana Sayfa";
+"search_placeholder" = "Bir şey ara...";
 
-"Giriş Yap" = "Giriş Yap";
-"Kategoriler" = "Kategoriler";
-"Kayıt Ol" = "Kayıt Ol";
+"email" = "E-Posta";
+"email_placeholder" = "E-Posta girin";
+
+"login" = "Giriş Yap";
+"categories" = "Kategoriler";
+"signup" = "Kayıt Ol";
 
 "meatAI" = "meatAI";
 
-"Sağlıklı beslenmenin akıllı yolu! 🌿" = "Sağlıklı beslenmenin akıllı yolu! 🌿";
+"slogan" = "Sağlıklı beslenmenin akıllı yolu! 🌿";
 
-"Şifre" = "Şifre";
-"Şifre girin" = "Şifre girin";
+"password" = "Şifre";
+"password_placeholder" = "Şifre girin";
 
-"Zaten Hesabım Var Giriş Yap" = "Zaten hesabım var, giriş yap";
+"already_have_account" = "Zaten hesabım var, giriş yap";
+
+"select_image_source" = "Görsel Kaynağı Seç";
+"camera" = "Kamera";
+"gallery_select" = "Galeriden Seç";
+"cancel" = "İptal";
+
+"camera_not_available" = "Kamera kullanılamıyor";
+"camera_not_found_message" = "Bu cihazda kamera bulunamadı. Gerçek bir iPhone ile test et.";
+"gallery_not_available" = "Galeri açılamıyor";
+"gallery_access_error" = "Fotoğraf galerisine erişilemiyor.";
+
+"meatAI_description" = "Yemeğini kamerayla tara veya galeriden fotoğraf seç, ardından akıllı analiz sürecini başlat.";
+"add_photo" = "Fotoğraf Ekle";
+"tip_text" = "İpucu: İstersen kamerayla anlık çek, istersen galeriden mevcut yemeği seç.";
+
+"instant_capture" = "Anlık Çekim";
+"instant_capture_desc" = "Kamerayla hemen fotoğraf al";
+"gallery_selection" = "Galeri Seçimi";
+"gallery_selection_desc" = "Mevcut fotoğrafı yükle";
+
+"how_it_works" = "Nasıl çalışır?";
+"step_1" = "Kamera veya galeri seç";
+"step_2" = "Yemeğin görselini ekle";
+"step_3" = "Analize gönder ve sonucu bekle";
+
+"image_preview" = "Görsel Önizleme";
+"no_image_selected" = "Henüz görsel seçilmedi";
+"select_image_hint" = "Kameradan çek veya galeriden bir fotoğraf seç";
+
+"select_image" = "Görsel Seç";
+"change_image" = "Görseli Değiştir";
+"analyze" = "Analize Gönder";

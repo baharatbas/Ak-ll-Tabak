@@ -103,7 +103,7 @@ struct meatAI: View {
             } label: {
                 HStack {
                     Image(systemName: "photo.on.rectangle.angled")
-                    Text("Fotoğraf Ekle")
+                    Text("add_photo")
                         .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)

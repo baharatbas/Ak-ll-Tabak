@@ -1,37 +1,62 @@
-/*
-  Localizable.strings
-  AkıllıTabak
-  Created by Bahar Atbaş on 26.11.2025.
-*/
+"home" = "Home";
+"search" = "Search";
+"category" = "Category";
+"account" = "My Account";
 
-"Anasayfa" = "Homepage";
-"Arama" = "Search";
-"Kategori" = "Category";
-"Hesabım" = "My Account";
+"coming_soon" = "%@ page coming soon 🍽️";
+"go_to_categories" = "🍽️ Go to Categories";
+"search_recipe" = "🔍 Search Recipes";
+"app_name_emoji" = "🥗 SmartPlate";
 
-"%@ sayfası yakında 🍽️" = "%@ page coming soon 🍽️";
-"🍽️ Kategorilere Git" = "🍽️ Go to Categories";
-"🔍 Tarif Ara" = "🔍 Search Recipes";
-"🥗 AkıllıTabak" = "🥗 SmartPlate";
+"app_name" = "Smart Plate";
+"app_name_upper" = "SMART PLATE";
 
-"Akıllı Tabak" = "Smart Plate";
-"AKILLI TABAK" = "SMART PLATE";
+"search_placeholder" = "Search for something...";
 
-"Ana Sayfa" = "Home";
-"Bir şey ara..." = "Search for something...";
+"email" = "Email";
+"email_placeholder" = "Enter Email";
 
-"E-Posta" = "Email";
-"E-Posta girin" = "Enter Email";
-
-"Giriş Yap" = "Login";
-"Kategoriler" = "Categories";
-"Kayıt Ol" = "Sign Up";
+"login" = "Login";
+"categories" = "Categories";
+"signup" = "Sign Up";
 
 "meatAI" = "meatAI";
 
-"Sağlıklı beslenmenin akıllı yolu! 🌿" = "The smart way to eat healthy! 🌿";
+"slogan" = "The smart way to eat healthy! 🌿";
 
-"Şifre" = "Password";
-"Şifre girin" = "Enter Password";
+"password" = "Password";
+"password_placeholder" = "Enter Password";
 
-"Zaten Hesabım Var Giriş Yap" = "Already have an account? Login";
+"already_have_account" = "Already have an account? Login";
+
+"select_image_source" = "Select Image Source";
+"camera" = "Camera";
+"gallery_select" = "Choose from Gallery";
+"cancel" = "Cancel";
+
+"camera_not_available" = "Camera not available";
+"camera_not_found_message" = "No camera found on this device. Please test on a real iPhone.";
+"gallery_not_available" = "Gallery cannot be opened";
+"gallery_access_error" = "Cannot access photo gallery.";
+
+"meatAI_description" = "Scan your meal using the camera or select a photo from the gallery, then start the smart analysis process.";
+"add_photo" = "Add Photo";
+"tip_text" = "Tip: You can take a photo instantly or choose an existing one from your gallery.";
+
+"instant_capture" = "Instant Capture";
+"instant_capture_desc" = "Take a photo with the camera";
+"gallery_selection" = "Gallery Selection";
+"gallery_selection_desc" = "Upload an existing photo";
+
+"how_it_works" = "How it works?";
+"step_1" = "Choose camera or gallery";
+"step_2" = "Add your meal image";
+"step_3" = "Send for analysis and wait for the result";
+
+"image_preview" = "Image Preview";
+"no_image_selected" = "No image selected yet";
+"select_image_hint" = "Take a photo or select one from your gallery";
+
+"select_image" = "Select Image";
+"change_image" = "Change Image";
+"analyze" = "Analyze";
