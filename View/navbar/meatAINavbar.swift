@@ -9,6 +9,7 @@ struct meatAI: View {
     @State private var kaynakSecimSayfasi = false
     @State private var kameraYokUyarisi = false
     @State private var galeriYokUyarisi = false
+    @State private var analizeSayfa = false  // ← YENİ EKLENDİ
     
     var body: some View {
         NavigationStack {
@@ -36,6 +37,11 @@ struct meatAI: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+            // ← YENİ EKLENDİ: Analiz sayfasına geçiş
+            .navigationDestination(isPresented: $analizeSayfa) {
+                analizeGonder(gorsel: secilenGorsel)
+                    .navigationTitle("Analiz")
+            }
             .sheet(isPresented: $pickerAcik) {
                 ImagePickerView(
                     secilenGorsel: $secilenGorsel,
@@ -103,7 +109,7 @@ struct meatAI: View {
             } label: {
                 HStack {
                     Image(systemName: "photo.on.rectangle.angled")
-                    Text("add_photo")
+                    Text("Fotoğraf Ekle")
                         .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)
@@ -215,7 +221,7 @@ struct meatAI: View {
                 }
 
                 Button {
-                    analizeGonder()
+                    analizeGonderAction()  // ← GÜNCELLENDİ
                 } label: {
                     HStack {
                         Image(systemName: "sparkles")
@@ -293,8 +299,9 @@ struct meatAI: View {
         pickerAcik = true
     }
 
-    private func analizeGonder() {
-        print("Analize gönderildi")
+    // ← GÜNCELLENDİ: Artık analiz sayfasına yönlendiriyor
+    private func analizeGonderAction() {
+        analizeSayfa = true
     }
 }
 

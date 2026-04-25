@@ -2,7 +2,7 @@ import Foundation
 
 final class GeminiService {
 
-    private let apiKey = ""
+    private let apiKey = "AIzaSyCS9BwBsaZI8nGuR8tjY2GFUhyAadWKal0"
 
     func sendMessage(_ message: String) async throws -> String {
 

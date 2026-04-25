@@ -13,6 +13,7 @@
 		8247126F2EB1388C001D5F01 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8247126E2EB1388C001D5F01 /* GoogleSignIn */; };
 		824712712EB1388C001D5F01 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 824712702EB1388C001D5F01 /* GoogleSignInSwift */; };
 		82AD09FB2F31013900B5A130 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 82AD09FA2F31013500B5A130 /* .gitignore */; };
+		82E4A2E42F941C3A0014C28A /* FoodClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		8266D4EC2E9EBB2D007F6972 /* AkıllıTabakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AkıllıTabakTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8266D4F62E9EBB2D007F6972 /* AkıllıTabakUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AkıllıTabakUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82AD09FA2F31013500B5A130 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = FoodClassifier.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -136,6 +138,7 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */,
 				82FFF9552F43B879000FD844 /* Doctors */,
 				82FFF9502F43B232000FD844 /* Recipes */,
 				82AD09FA2F31013500B5A130 /* .gitignore */,
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E4A2E42F941C3A0014C28A /* FoodClassifier.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +500,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D7WC8T3HYL;
+				DEVELOPMENT_TEAM = A8483PP4UH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to analyze food photos.";
@@ -526,7 +530,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D7WC8T3HYL;
+				DEVELOPMENT_TEAM = A8483PP4UH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to analyze food photos.";
