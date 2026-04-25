@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct personNavbar: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @ObservedObject var authViewModel: AuthViewModel
     @Environment(\.dismiss) var dismiss
     @State private var email = ""
     @State private var password = ""
-    @State private var isRegister = false
+    @State private var isLoading = false
     
     
     var body: some View {
@@ -39,27 +39,43 @@ struct personNavbar: View {
                 }.padding(.horizontal)
                 
                 Button(action: {
+                    isLoading = true
+                    authViewModel.errorMessage = ""
                     Task{
                         await authViewModel.register(email: email, password: password)
-                        
-                        if authViewModel.errorMessage.isEmpty{
-                            isRegister = true
-                        }
+                        isLoading = false
                     }
                     
                 }) {
-                    Text("Kayıt Ol")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .font(.headline)
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(10)
+                    } else {
+                        Text("Kayıt Ol")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .font(.headline)
+                    }
                 }
                 .padding(.horizontal)
+                .disabled(isLoading)
+                
+                if !authViewModel.errorMessage.isEmpty {
+                    Text(authViewModel.errorMessage)
+                        .foregroundColor(.red)
+                        .font(.caption)
+                        .padding(.top, 5)
+                }
                 
                 VStack{
-                    NavigationLink(destination: personSıngIn()) {
+                    NavigationLink(destination: personSıngIn(authViewModel: authViewModel)) {
                         Text("Zaten Hesabım Var Giriş Yap")
                     }
                     .foregroundColor(.gray)
@@ -78,10 +94,15 @@ struct personNavbar: View {
                         }
                     }.foregroundStyle(Color.black)
                 }}
+            .onChange(of: authViewModel.user) { _, user in
+                if user != nil {
+                    dismiss()
+                }
+            }
         }
     }
 }
 #Preview {
-    personNavbar()
+    personNavbar(authViewModel: AuthViewModel())
 }
 

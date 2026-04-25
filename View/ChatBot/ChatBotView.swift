@@ -10,6 +10,7 @@ import SwiftUICore
 import SwiftUI
 struct ChatBotView: View {
     @StateObject var vm = ChatViewModel()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -47,6 +48,16 @@ struct ChatBotView: View {
                 .padding(.horizontal)
             }
             .padding()
+        }
+        .navigationTitle("Asistan")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { dismiss() }) {
+                    Image(systemName: "chevron.left")
+                    Text("Geri")
+                }
+            }
         }
     }
 }

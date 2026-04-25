@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct personSıngIn: View{
-    @StateObject private var authViewModel = AuthViewModel()
+    @ObservedObject var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
-    @State private var isRegister = false
+    @State private var isLoading = false
+    @Environment(\.dismiss) var dismiss
 
    var body: some View{
        VStack(spacing: 30){
@@ -38,26 +39,40 @@ struct personSıngIn: View{
            
            VStack{
                Button(action: {
+                   isLoading = true
+                   authViewModel.errorMessage = ""
                    Task{
                        await authViewModel.Login(email: email, password: password)
-                       
-                       if authViewModel.errorMessage.isEmpty{
-                           isRegister = true
-                       }
+                       isLoading = false
                    }
                }) {
-                   Text("Giriş Yap")
-                       .frame(maxWidth: .infinity)
-                       .padding()
-                       .background(Color.green)
-                       .foregroundColor(.white)
-                       .cornerRadius(10)
-                       .font(.headline)
+                   if isLoading {
+                       ProgressView()
+                           .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                           .frame(maxWidth: .infinity)
+                           .padding()
+                           .background(Color.green)
+                           .cornerRadius(10)
+                   } else {
+                       Text("Giriş Yap")
+                           .frame(maxWidth: .infinity)
+                           .padding()
+                           .background(Color.green)
+                           .foregroundColor(.white)
+                           .cornerRadius(10)
+                           .font(.headline)
+                   }
                }
                .padding(.horizontal)
-               NavigationLink(destination: HomeView(), isActive: $isRegister) {
-                   EmptyView()
+               .disabled(isLoading)
+               
+               if !authViewModel.errorMessage.isEmpty {
+                   Text(authViewModel.errorMessage)
+                       .foregroundColor(.red)
+                       .font(.caption)
+                       .padding(.top, 5)
                }
+               
                HStack{
                    Button(action: {
                        
@@ -74,10 +89,15 @@ struct personSıngIn: View{
                }.foregroundStyle(Color.black)
            }
        }
+       .onChange(of: authViewModel.user) { _, user in
+           if user != nil {
+               dismiss()
+           }
+       }
     }
 }
 
 #Preview {
-    personSıngIn()
+    personSıngIn(authViewModel: AuthViewModel())
     
 }

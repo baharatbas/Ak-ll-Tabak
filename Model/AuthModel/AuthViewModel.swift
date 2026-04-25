@@ -10,8 +10,14 @@ import FirebaseAuth
 
 @MainActor
 class AuthViewModel: ObservableObject {
-    @Published var user: User? = nil
+    @Published var user: User? = Auth.auth().currentUser
     @Published var errorMessage: String = ""
+    
+    init() {
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            self?.user = user
+        }
+    }
     
     func register(email: String, password: String) async  {
         do{

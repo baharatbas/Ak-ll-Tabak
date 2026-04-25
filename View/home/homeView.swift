@@ -10,6 +10,8 @@ import SwiftUI
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showChatBot = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -42,16 +44,21 @@ struct HomeView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(15)
                     
-                    NavigationStack{
-                        NavigationLink(destination: ChatBotView()) {
-                            HStack {
-                                Text("Assistant")
-                                Image(systemName: "wand.and.sparkles")
-                            }
-                            .padding()
-                            .background(Color.black)
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
+                    Button(action: {
+                        showChatBot = true
+                    }) {
+                        HStack {
+                            Text("Assistant")
+                            Image(systemName: "wand.and.sparkles")
+                        }
+                        .padding()
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                    }
+                    .fullScreenCover(isPresented: $showChatBot) {
+                        NavigationStack {
+                            ChatBotView()
                         }
                     }
                 }
