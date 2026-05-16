@@ -1,74 +1,97 @@
 //
-//  File.swift
+//  ChickenSalad.swift
 //  AkıllıTabak
-//
-//  Created by BAHAR ATBAŞ on 16.02.2026.
 //
 
 import SwiftUI
 
 struct ChickenSalad: View {
+    
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading , spacing: 20){
+        
+        ScrollView(showsIndicators: false) {
+            
+            VStack(alignment: .leading, spacing: 24) {
+                
                 Image("meal1")
                     .resizable()
-                    .scaledToFit()
-                    .cornerRadius(20)
+                    .scaledToFill()
                     .frame(height: 317)
+                    .frame(maxWidth: .infinity)
                     .clipped()
-                    //.ignoresSafeArea(edges: .top)
+                    .cornerRadius(30)
+                    .shadow(color: .black.opacity(0.15),
+                            radius: 10,
+                            x: 0,
+                            y: 6)
                 
-                
-                Text("Chicken Salad")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-        
-                Text("""
-Chicken Salad diyeti, yüksek protein ve düşük karbonhidrat içeriğiyle öne çıkan bir beslenme modelidir. Temelinde ızgara veya haşlanmış tavuk, bol yeşillik ve sağlıklı yağlar bulunur.
+                VStack(alignment: .leading, spacing: 20) {
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        
+                        Text("Chicken Salad")
+                            .font(.system(size: 34, weight: .bold))
+                        
+                        HStack(spacing: 10) {
+                            
+                            Label("High Protein",
+                                  systemImage: "flame.fill")
+                            
+                            Label("Fitness Meal",
+                                  systemImage: "figure.run")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    }
+                    
+                    
+                    InfoCard(
+                        title: "About",
+                        icon: "fork.knife",
+                        content:
+"""
+Chicken Salad diyeti, yüksek protein ve düşük karbonhidrat içeriğiyle öne çıkan bir beslenme modelidir.
 
-Kas kütlesini korumaya yardımcı olur, uzun süre tokluk sağlar ve kilo kontrolünü destekler. Özellikle spor yapan bireyler tarafından tercih edilir.
-""")
-                .lineSpacing(8)
-                .padding()
-                Divider() //çizgi çeker
-                
-                Text("Neler Tüketilir?")
-                    .font(.headline)
-                    .padding()
-                
-                Text("""
-                • Izgara veya haşlanmış tavuk göğsü
-                • Marul, roka, ıspanak gibi yeşillikler
-                • Salatalık, domates, biber
-                • Zeytinyağı ve limon sosu
-                • Avokado ve ceviz gibi sağlıklı yağlar
-                """)
-                .padding()
-                Divider()
-                
-                Text("Kimler İçin Uygun Değildir?")
-                          .font(.headline)
-                          .padding()
-
-                      Text("""
-      Böbrek rahatsızlığı olanlar veya yüksek protein tüketmesi sakıncalı bireyler için uygun olmayabilir. Uzun süreli uygulanmadan önce uzman görüşü alınmalıdır.
-      """)
-                      .padding()
-                
-                
-
+Kas kütlesini korumaya yardımcı olur, uzun süre tokluk sağlar ve kilo kontrolünü destekler.
+"""
+                    )
+                    
+                    
+                    InfoCard(
+                        title: "Ingredients",
+                        icon: "list.bullet",
+                        content:
+"""
+• Izgara tavuk göğsü
+• Marul ve roka
+• Domates ve salatalık
+• Zeytinyağı & limon
+• Avokado ve ceviz
+"""
+                    )
+                    
+                    
+                    InfoCard(
+                        title: "Who Should Be Careful?",
+                        icon: "exclamationmark.triangle.fill",
+                        content:
+"""
+Böbrek rahatsızlığı olan bireyler ve yüksek protein tüketmesi sakıncalı kişiler dikkatli tüketmelidir.
+"""
+                    )
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
             }
-            
-            
         }
+        .background(Color(.systemGroupedBackground))
         .ignoresSafeArea(edges: .top)
         .navigationBarTitleDisplayMode(.inline)
-       
     }
 }
 
 #Preview {
-    ChickenSalad()
+    NavigationStack {
+        ChickenSalad()
+    }
 }

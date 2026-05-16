@@ -2,67 +2,95 @@
 //  QuinoaVeggieView.swift
 //  AkıllıTabak
 //
-//  Created by BAHAR ATBAŞ on 21.02.2026.
-//
 
 import SwiftUI
 
 struct QuinoaVeggieView: View {
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-
+        
+        ScrollView(showsIndicators: false) {
+            
+            VStack(alignment: .leading, spacing: 24) {
+                
                 Image("quinoabowl")
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 420, height: 300)
-                    .cornerRadius(24)
+                    .clipped()
+                    .cornerRadius(30)
+                    .shadow(color: .black.opacity(0.15),
+                            radius: 10,
+                            x: 0,
+                            y: 6)
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        
+                        Text("Quinoa Veggie Bowl")
+                            .font(.system(size: 34, weight: .bold))
+                        
+                        HStack(spacing: 10) {
+                            
+                            Label("Vegan",
+                                  systemImage: "leaf.fill")
+                            
+                            Label("High Fiber",
+                                  systemImage: "heart.text.square.fill")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    }
+                    
+                    
+                    InfoCard(
+                        title: "About",
+                        icon: "fork.knife",
+                        content:
+"""
+Quinoa Veggie Bowl, bitkisel protein açısından zengin ve dengeli bir öğündür.
 
-
-                Text("Quinoa Veggie Bowl")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-
-                Text("""
-Quinoa Veggie Bowl, bitkisel protein açısından zengin ve dengeli bir öğündür. Lif oranı yüksektir ve sindirimi destekler.
-
-Vegan ve vejetaryen beslenenler için sağlıklı bir alternatif sunar.
-""")
-                .lineSpacing(8)
-                .padding()
-
-                Divider()
-
-                Text("Neler Tüketilir?")
-                    .font(.headline)
-                    .padding()
-
-                Text("""
+Lif oranı yüksektir ve sindirimi destekler.
+"""
+                    )
+                    
+                    
+                    InfoCard(
+                        title: "Ingredients",
+                        icon: "list.bullet",
+                        content:
+"""
 • Haşlanmış quinoa
 • Izgara kabak ve biber
 • Nohut
-• Zeytinyağı ve limon
+• Zeytinyağı & limon
 • Maydanoz
-""")
-                .padding()
-
-                Divider()
-
-                Text("Kimler İçin Uygun Değildir?")
-                    .font(.headline)
-                    .padding()
-
-                Text("""
+"""
+                    )
+                    
+                    
+                    InfoCard(
+                        title: "Who Should Be Careful?",
+                        icon: "exclamationmark.triangle.fill",
+                        content:
+"""
 Tahıl hassasiyeti olan bireyler dikkatli tüketmelidir.
-""")
-                .padding()
+"""
+                    )
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
             }
-            
         }
+        .background(Color(.systemGroupedBackground))
         .ignoresSafeArea(edges: .top)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 #Preview {
-    QuinoaVeggieView()
+    NavigationStack {
+        QuinoaVeggieView()
+    }
 }

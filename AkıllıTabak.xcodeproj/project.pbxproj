@@ -55,6 +55,11 @@
 			path = Localication;
 			sourceTree = "<group>";
 		};
+		8245D0652FB878FC006125D2 /* HealtySummary */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HealtySummary;
+			sourceTree = "<group>";
+		};
 		82463F8E2F2A0DC300DDC55F /* Diets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Diets;
@@ -138,6 +143,7 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				8245D0652FB878FC006125D2 /* HealtySummary */,
 				82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */,
 				82FFF9552F43B879000FD844 /* Doctors */,
 				82FFF9502F43B232000FD844 /* Recipes */,
@@ -187,6 +193,7 @@
 			fileSystemSynchronizedGroups = (
 				823A53392F2534D1000C846C /* Services */,
 				823F751D2ED77C7500F7A15B /* Localication */,
+				8245D0652FB878FC006125D2 /* HealtySummary */,
 				82463F8E2F2A0DC300DDC55F /* Diets */,
 				8266D4E12E9EBB2C007F6972 /* AkıllıTabak */,
 				82E586A22E9FF8510056BCB5 /* Data */,

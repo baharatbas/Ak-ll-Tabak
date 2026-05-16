@@ -32,6 +32,7 @@ struct HomeView: View {
                                 .fontWeight(.semibold)
                         }
                         
+                        
                         Spacer()
                         
                         Image(systemName: "bell")
@@ -74,7 +75,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            CategoryItem(name: "Vegan", imageName: "drink1")
+                            CategoryItem(name: "Vegan", imageName: "vegan")
                             CategoryItem(name: "Carb", imageName: "grad")
                             CategoryItem(name: "Protein", imageName: "protein")
                             CategoryItem(name: "Snacks", imageName: "snak")
@@ -95,7 +96,7 @@ struct HomeView: View {
                     
                     
                     // MARK: Diets Section
-                    HStack {
+                   /* HStack {
                         Text("Diets")
                             .font(.title2)
                             .fontWeight(.bold)
@@ -110,7 +111,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     Diyet(limit: 3)
-                        .padding(.horizontal)
+                        .padding(.horizontal)*/
                 }
                 .padding(.vertical)
             }
@@ -118,33 +119,29 @@ struct HomeView: View {
     }
 }
 
-
-
-
 struct CategoryItem: View {
     let name: String
     let imageName: String
     
     var body: some View {
-        VStack {
-            Circle()
-                .fill(Color(.systemGray5))
-                .frame(width: 70, height: 70)
-                .overlay(
-                    Image(imageName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 35, height: 35)
-                    
-                    )
+        VStack(spacing: 8) {
             
+            Image(imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 70, height: 70)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.black, lineWidth: 1)
+                )
             
             Text(name)
                 .font(.caption)
+                .fontWeight(.medium)
         }
     }
 }
-
 struct MealCardView: View {
     let title: String
     let kcal: Int

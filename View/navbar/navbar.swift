@@ -26,10 +26,10 @@ struct Navbar: View {
                     }
                     .tag(2)
 
-                DoctorsCard()
+                Diyet()
                     .tabItem {
                         Image(systemName: "stethoscope")
-                        Text("Danışman")
+                        Text("Diyet")
                     }
                     .tag(3)
 

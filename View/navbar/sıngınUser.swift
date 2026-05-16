@@ -7,6 +7,15 @@ struct sıngınUser: View {
 
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var selectedPhotoData: Data?
+    @State private var analizlereGit = false
+    @State private var ogunEkleGit = false
+    @State private var tumdiet = false
+    @State private var akdenizSayfasi = false
+    @State private var ketoSayfasi = false
+    @State private var orucSayfasi = false
+    @State private var suTakip = false
+    @State private var activiteView = false
+    @State private var nutritionView = false
 
     private var kullanıcıAdı: String {
         authViewModel.displayName.isEmpty ? "Kullanıcı" : authViewModel.displayName
@@ -139,20 +148,24 @@ private extension sıngınUser {
         }
     }
 
+   
+
     var hızlıİşlemler: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             Text("Hızlı Erişim")
                 .font(.title3)
                 .fontWeight(.bold)
 
             HStack(spacing: 14) {
+
                 dashboardButonu(
                     başlık: "Analizlerime Git",
                     altBaşlık: "Geçmiş analizlerini görüntüle",
                     ikon: "chart.bar.xaxis",
                     renk: .green
                 ) {
-                    print("Analizlerime Git tapped")
+                    analizlereGit = true
                 }
 
                 dashboardButonu(
@@ -161,12 +174,17 @@ private extension sıngınUser {
                     ikon: "camera.viewfinder",
                     renk: .orange
                 ) {
-                    print("Öğün Ekle tapped")
+                    ogunEkleGit = true
                 }
             }
         }
+        .navigationDestination(isPresented: $analizlereGit) {
+            analizNavbar()
+        }
+        .navigationDestination(isPresented: $ogunEkleGit) {
+            Diyet()
+        }
     }
-
     var favoriDiyetler: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
@@ -177,33 +195,45 @@ private extension sıngınUser {
                 Spacer()
 
                 Button("Tümünü Gör") {
-                    print("Tüm favori diyetler")
+                    tumdiet = true
                 }
                 .font(.subheadline)
                 .foregroundColor(.green)
             }
 
             VStack(spacing: 12) {
-                diyetSatırı(
-                    renk: .green,
-                    ikon: "leaf.fill",
-                    başlık: "Akdeniz Diyeti",
-                    açıklama: "Dengeli ve sürdürülebilir beslenme planı"
-                )
-
-                diyetSatırı(
-                    renk: .orange,
-                    ikon: "bolt.heart.fill",
-                    başlık: "Ketojenik Diyet",
-                    açıklama: "Düşük karbonhidrat odaklı beslenme"
-                )
-
-                diyetSatırı(
-                    renk: .blue,
-                    ikon: "clock.fill",
-                    başlık: "Aralıklı Oruç",
-                    açıklama: "Belirli saatlerde kontrollü beslenme"
-                )
+                Button{
+                    akdenizSayfasi = true
+                }label: {
+                    diyetSatırı(
+                        renk: .green,
+                        ikon: "leaf.fill",
+                        başlık: "Akdeniz Diyeti",
+                        açıklama: "Dengeli ve sürdürülebilir beslenme planı"
+                    )
+                }
+               
+                Button{
+                    ketoSayfasi = true
+                }label: {
+                    diyetSatırı(
+                        renk: .orange,
+                        ikon: "bolt.heart.fill",
+                        başlık: "Ketojenik Diyet",
+                        açıklama: "Düşük karbonhidrat odaklı beslenme"
+                    )
+                }
+                Button{
+                    orucSayfasi = true
+                }label: {
+                    diyetSatırı(
+                        renk: .blue,
+                        ikon: "clock.fill",
+                        başlık: "Aralıklı Oruç",
+                        açıklama: "Belirli saatlerde kontrollü beslenme"
+                    )
+                }
+               
             }
             .padding(16)
             .background(
@@ -211,7 +241,20 @@ private extension sıngınUser {
                     .fill(Color(.systemBackground))
                     .shadow(color: .black.opacity(0.06), radius: 12, x: 0, y: 6)
             )
+            .navigationDestination(isPresented: $akdenizSayfasi){
+                AkdenizDiyetView()
+            }
+            .navigationDestination(isPresented: $ketoSayfasi){
+                KetojenikDiyetView()
+            }
+            .navigationDestination(isPresented: $orucSayfasi){
+                AralikliOrucView()
+            }
         }
+        .navigationDestination(isPresented: $tumdiet){
+            Diyet()
+        }
+       
     }
 
     var analizKartı: some View {
@@ -273,27 +316,49 @@ private extension sıngınUser {
                 .fontWeight(.bold)
 
             VStack(spacing: 12) {
-                öneriKartı(
-                    ikon: "drop.fill",
-                    başlık: "Su Takibi",
-                    açıklama: "Günlük su tüketimini takip etmeyi unutma.",
-                    renk: .blue
-                )
+                Button{
+                    suTakip = true
+                }label: {
+                    öneriKartı(
+                        ikon: "drop.fill",
+                        başlık: "Su Takibi",
+                        açıklama: "Günlük su tüketimini takip etmeyi unutma.",
+                        renk: .blue
+                    )
+                }
+                Button{
+                    activiteView = true
+                }label: {
+                    öneriKartı(
+                        ikon: "figure.walk",
+                        başlık: "Günlük Aktivite",
+                        açıklama: "Beslenme kadar hareket de önemli. Küçük yürüyüşler ekle.",
+                        renk: .purple
+                    )
+                }
+                Button{
+                    nutritionView = true
+                }label: {
+                    öneriKartı(
+                        ikon: "fork.knife",
+                        başlık: "Beslenme Önerileri",
+                        açıklama: "Hedeflerine uygun yemek tercihlerini buradan inceleyebilirsin.",
+                        renk: .orange
+                    )
+                }
 
-                öneriKartı(
-                    ikon: "figure.walk",
-                    başlık: "Günlük Aktivite",
-                    açıklama: "Beslenme kadar hareket de önemli. Küçük yürüyüşler ekle.",
-                    renk: .purple
-                )
-
-                öneriKartı(
-                    ikon: "fork.knife",
-                    başlık: "Beslenme Önerileri",
-                    açıklama: "Hedeflerine uygun yemek tercihlerini buradan inceleyebilirsin.",
-                    renk: .orange
-                )
             }
+            .navigationDestination(isPresented: $suTakip){
+                WaterSummary()
+            }
+            .navigationDestination(isPresented: $activiteView){
+                ActivityView()
+            }
+            .navigationDestination(isPresented: $nutritionView){
+                NutritionView()
+            }
+
+
         }
     }
 
