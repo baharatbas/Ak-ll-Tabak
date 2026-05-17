@@ -16,6 +16,9 @@ struct analizeGonder: View {
     
     @State private var sonuc: AnalizSonucu?
     @State private var yukleniyor = false
+    @State private var aiYorumu: String = ""
+    @State private var yorumYukleniyor = false
+    @State private var hataMesaji = ""
     
     var body: some View {
         ZStack {
@@ -36,6 +39,14 @@ struct analizeGonder: View {
                     
                     if yukleniyor {
                         yukleniyorKart
+                    } else if !hataMesaji.isEmpty {
+                        Text("Hata: \(hataMesaji)")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.red)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(.ultraThinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
                     } else if let sonuc {
                         yemekBaslikKart(sonuc: sonuc)
                         makroKartlari(sonuc: sonuc)
@@ -250,19 +261,30 @@ struct analizeGonder: View {
     // MARK: - Öneri Kart
     private var oneriKart: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Öneriler")
+            Text("AI Yorumu")
                 .font(.footnote.bold())
                 .foregroundStyle(.black.opacity(0.6))
                 .textCase(.uppercase)
                 .tracking(1.2)
-            
-            VStack(spacing: 10) {
-                oneriSatiri(icon: "checkmark.circle.fill",
-                            metin: "Yüksek protein içeriği kas gelişimini destekler.")
-                oneriSatiri(icon: "exclamationmark.circle.fill",
-                            metin: "Karbonhidrat oranı orta düzeyde, porsiyon kontrolü önerilir.")
-                oneriSatiri(icon: "info.circle.fill",
-                            metin: "Yanında bol yeşillik tüketilmesi tavsiye edilir.")
+
+            if yorumYukleniyor {
+                HStack {
+                    ProgressView()
+                    Text("AI yorum hazırlanıyor...")
+                        .font(.subheadline)
+                }
+                .padding(14)
+                .background(Color.white.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            } else {
+                Text(aiYorumu.isEmpty ? "Yorum hazırlanamadı." : aiYorumu)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.82))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.white.opacity(0.08))
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
         }
     }
@@ -330,89 +352,86 @@ struct analizeGonder: View {
 
     // MARK: - Analiz
     private func basitAnaliz() {
-        guard let uiImage = gorsel else { return }
+        guard let uiImage = gorsel else {
+            hataMesaji = "Görsel bulunamadı."
+            return
+        }
 
         yukleniyor = true
         sonuc = nil
+        hataMesaji = ""
+        aiYorumu = ""
 
-        DispatchQueue.global(qos: .userInitiated).async {
-
-            guard let resized = uiImage.resizeTo224(),
-                  let cgImage = resized.cgImage else {
-                DispatchQueue.main.async { yukleniyor = false }
-                return
-            }
-
+        Task {
             do {
-                // MLMultiArray oluştur: [1, 224, 224, 3]
-                let multiArray = try MLMultiArray(shape: [1, 224, 224, 3], dataType: .float32)
+                print("✅ Analiz başladı")
 
-                let width = 224
-                let height = 224
-                let colorSpace = CGColorSpaceCreateDeviceRGB()
-                var pixelData = [UInt8](repeating: 0, count: width * height * 4)
+                let result = try await MealAnalysisService().analyze(image: uiImage)
 
-                guard let context = CGContext(
-                    data: &pixelData,
-                    width: width,
-                    height: height,
-                    bitsPerComponent: 8,
-                    bytesPerRow: width * 4,
-                    space: colorSpace,
-                    bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue
-                ) else {
-                    DispatchQueue.main.async { yukleniyor = false }
-                    return
-                }
+                print("✅ API sonucu geldi:", result)
 
-                context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-
-                for y in 0..<height {
-                    for x in 0..<width {
-                        let pixelIndex = (y * width + x) * 4
-                        let r = Float(pixelData[pixelIndex])     / 255.0
-                        let g = Float(pixelData[pixelIndex + 1]) / 255.0
-                        let b = Float(pixelData[pixelIndex + 2]) / 255.0
-
-                        multiArray[[0, y as NSNumber, x as NSNumber, 0]] = NSNumber(value: r)
-                        multiArray[[0, y as NSNumber, x as NSNumber, 1]] = NSNumber(value: g)
-                        multiArray[[0, y as NSNumber, x as NSNumber, 2]] = NSNumber(value: b)
-                    }
-                }
-
-                let model = try FoodClassifier(configuration: MLModelConfiguration())
-                let input = FoodClassifierInput(input_layer_1: multiArray)
-                let prediction = try model.prediction(input: input)
-
-                // ✅ featureValue ile output oku (classLabel üyesi yok)
-                let yemekAdi = prediction.featureValue(for: "classLabel")?.stringValue ?? "Bilinmiyor"
-                let probsDict = prediction.featureValue(for: "classLabelProbs")?.dictionaryValue as? [String: Double]
-                let confidence = probsDict?[yemekAdi] ?? 0.75
-
-                // Debug: output isimlerini konsola yaz
-                print("Output feature names:", prediction.featureNames)
-
-                DispatchQueue.main.async {
+                await MainActor.run {
                     sonuc = AnalizSonucu(
-                        yemekAdi: yemekAdi,
-                        kalori: Int(confidence * 600),
-                        protein: confidence * 50,
-                        karbonhidrat: confidence * 30,
-                        yag: confidence * 20,
-                        puan: Int(confidence * 100)
+                        yemekAdi: result.foodName,
+                        kalori: result.calories,
+                        protein: result.protein,
+                        karbonhidrat: result.carbs,
+                        yag: result.fat,
+                        puan: min(100, max(20, 100 - result.calories / 15))
                     )
+
+                    aiYorumu = result.comment
                     yukleniyor = false
                 }
-
             } catch {
-                DispatchQueue.main.async {
-                    print("HATA:", error)
+                print("❌ ANALİZ HATASI:", error.localizedDescription)
+
+                await MainActor.run {
+                    hataMesaji = error.localizedDescription
                     yukleniyor = false
                 }
             }
         }
     }
+    
+    private func aiYorumuOlustur(sonuc: AnalizSonucu) {
+        yorumYukleniyor = true
+        aiYorumu = ""
+
+        Task {
+            do {
+                let prompt = """
+                Kullanıcının tabağında şu yemek tespit edildi: \(sonuc.yemekAdi)
+
+                Tahmini besin değerleri:
+                Kalori: \(sonuc.kalori) kcal
+                Protein: \(Int(sonuc.protein)) g
+                Karbonhidrat: \(Int(sonuc.karbonhidrat)) g
+                Yağ: \(Int(sonuc.yag)) g
+                Sağlık skoru: \(sonuc.puan)/100
+
+                Bu yemeği kullanıcıya Türkçe, kısa, profesyonel ve sağlıklı beslenme odaklı yorumla.
+                3-4 cümle yeterli olsun.
+                Kesin tıbbi tavsiye verme, sadece genel beslenme önerisi ver.
+                """
+
+                let yorum = try await GeminiService().sendMessage(prompt)
+
+                await MainActor.run {
+                    self.aiYorumu = yorum
+                    self.yorumYukleniyor = false
+                }
+            } catch {
+                await MainActor.run {
+                    self.aiYorumu = "AI yorumu alınamadı. Besin değerleri tahmini olarak gösteriliyor."
+                    self.yorumYukleniyor = false
+                }
+            }
+        }
+    }
 }
+
+
 
 #Preview {
     let renderer = UIGraphicsImageRenderer(size: CGSize(width: 300, height: 200))

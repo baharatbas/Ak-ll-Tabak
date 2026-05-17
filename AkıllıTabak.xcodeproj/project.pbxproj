@@ -45,6 +45,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		822E122F2FBA1F590049408E /* Utilities */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		822E124B2FBA20E50049408E /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
+			sourceTree = "<group>";
+		};
 		823A53392F2534D1000C846C /* Services */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Services;
@@ -88,11 +98,6 @@
 		82E586A32E9FF8580056BCB5 /* View */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = View;
-			sourceTree = "<group>";
-		};
-		82E586A42E9FF8D80056BCB5 /* Model */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Model;
 			sourceTree = "<group>";
 		};
 		82E586A52E9FF8DE0056BCB5 /* App */ = {
@@ -143,6 +148,7 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				822E122F2FBA1F590049408E /* Utilities */,
 				8245D0652FB878FC006125D2 /* HealtySummary */,
 				82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */,
 				82FFF9552F43B879000FD844 /* Doctors */,
@@ -153,7 +159,7 @@
 				823A53392F2534D1000C846C /* Services */,
 				823F751D2ED77C7500F7A15B /* Localication */,
 				82E586A52E9FF8DE0056BCB5 /* App */,
-				82E586A42E9FF8D80056BCB5 /* Model */,
+				822E124B2FBA20E50049408E /* Model */,
 				82E586A32E9FF8580056BCB5 /* View */,
 				82E586A22E9FF8510056BCB5 /* Data */,
 				8266D4E12E9EBB2C007F6972 /* AkıllıTabak */,
@@ -191,6 +197,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				822E122F2FBA1F590049408E /* Utilities */,
+				822E124B2FBA20E50049408E /* Model */,
 				823A53392F2534D1000C846C /* Services */,
 				823F751D2ED77C7500F7A15B /* Localication */,
 				8245D0652FB878FC006125D2 /* HealtySummary */,
@@ -198,7 +206,6 @@
 				8266D4E12E9EBB2C007F6972 /* AkıllıTabak */,
 				82E586A22E9FF8510056BCB5 /* Data */,
 				82E586A32E9FF8580056BCB5 /* View */,
-				82E586A42E9FF8D80056BCB5 /* Model */,
 				82E586A52E9FF8DE0056BCB5 /* App */,
 				82FFF9502F43B232000FD844 /* Recipes */,
 				82FFF9552F43B879000FD844 /* Doctors */,
