@@ -1,9 +1,11 @@
 import SwiftUI
 import UIKit
 import CoreML
+import SwiftData
 
 struct analizeGonder: View {
     let gorsel: UIImage?
+    @Environment(\.modelContext) private var modelContext
     
     struct AnalizSonucu {
         let yemekAdi: String
@@ -371,7 +373,7 @@ struct analizeGonder: View {
                 print("✅ API sonucu geldi:", result)
 
                 await MainActor.run {
-                    sonuc = AnalizSonucu(
+                    let yeniSonuc = AnalizSonucu(
                         yemekAdi: result.foodName,
                         kalori: result.calories,
                         protein: result.protein,
@@ -380,7 +382,26 @@ struct analizeGonder: View {
                         puan: min(100, max(20, 100 - result.calories / 15))
                     )
 
+                    sonuc = yeniSonuc
                     aiYorumu = result.comment
+
+                    let record = MealAnalysisRecord(
+                        foodName: result.foodName,
+                        calories: result.calories,
+                        protein: result.protein,
+                        carbs: result.carbs,
+                        fat: result.fat,
+                        comment: result.comment
+                    )
+
+                    modelContext.insert(record)
+
+                    do {
+                        try modelContext.save()
+                    } catch {
+                        print("Kayıt hatası:", error.localizedDescription)
+                    }
+
                     yukleniyor = false
                 }
             } catch {
