@@ -53,7 +53,7 @@ struct sıngınUser: View {
 
 // MARK: - UI Bölümleri
 private extension sıngınUser {
-
+    
     var üstAlan: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .top) {
@@ -61,18 +61,18 @@ private extension sıngınUser {
                     Text("Hoş Geldin")
                         .font(.title3)
                         .foregroundColor(.secondary)
-
+                    
                     Text(kullanıcıAdı)
                         .font(.system(size: 30, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
-
+                    
                     Text("Bugün sağlıklı seçimler için harika bir gün.")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-
+                
                 Spacer()
-
+                
                 PhotosPicker(
                     selection: $selectedPhotoItem,
                     matching: .images,
@@ -89,7 +89,7 @@ private extension sıngınUser {
                                 ZStack {
                                     Circle()
                                         .fill(Color.green.opacity(0.15))
-
+                                    
                                     Image(systemName: "person.crop.circle.fill")
                                         .resizable()
                                         .scaledToFit()
@@ -105,12 +105,12 @@ private extension sıngınUser {
                                 .stroke(Color.white, lineWidth: 3)
                         )
                         .shadow(color: .black.opacity(0.10), radius: 8, x: 0, y: 4)
-
+                        
                         ZStack {
                             Circle()
                                 .fill(Color.green)
                                 .frame(width: 24, height: 24)
-
+                            
                             Image(systemName: "camera.fill")
                                 .font(.caption2)
                                 .foregroundColor(.white)
@@ -127,18 +127,18 @@ private extension sıngınUser {
                     }
                 }
             }
-
+            
             Text("Profil fotoğrafını değiştirmek için resme dokun.")
                 .font(.caption)
                 .foregroundColor(.secondary)
-
+            
             HStack(spacing: 12) {
                 miniBilgiKartı(
                     ikon: "heart.text.square.fill",
                     başlık: "Sağlık",
                     altBaşlık: "Takibini sürdür"
                 )
-
+                
                 miniBilgiKartı(
                     ikon: "flame.fill",
                     başlık: "Hedef",
@@ -147,18 +147,18 @@ private extension sıngınUser {
             }
         }
     }
-
-   
-
+    
+    
+    
     var hızlıİşlemler: some View {
         VStack(alignment: .leading, spacing: 14) {
-
+            
             Text("Hızlı Erişim")
                 .font(.title3)
                 .fontWeight(.bold)
-
+            
             HStack(spacing: 14) {
-
+                
                 dashboardButonu(
                     başlık: "Analizlerime Git",
                     altBaşlık: "Geçmiş analizlerini görüntüle",
@@ -167,7 +167,7 @@ private extension sıngınUser {
                 ) {
                     analizlereGit = true
                 }
-
+                
                 dashboardButonu(
                     başlık: "Öğün Ekle",
                     altBaşlık: "Yeni yemek analizi başlat",
@@ -182,7 +182,7 @@ private extension sıngınUser {
             analizNavbar()
         }
         .navigationDestination(isPresented: $ogunEkleGit) {
-            Diyet()
+            meatAI()
         }
     }
     var favoriDiyetler: some View {
@@ -191,16 +191,16 @@ private extension sıngınUser {
                 Text("Favori Diyetler")
                     .font(.title3)
                     .fontWeight(.bold)
-
+                
                 Spacer()
-
+                
                 Button("Tümünü Gör") {
                     tumdiet = true
                 }
                 .font(.subheadline)
                 .foregroundColor(.green)
             }
-
+            
             VStack(spacing: 12) {
                 Button{
                     akdenizSayfasi = true
@@ -212,7 +212,7 @@ private extension sıngınUser {
                         açıklama: "Dengeli ve sürdürülebilir beslenme planı"
                     )
                 }
-               
+                
                 Button{
                     ketoSayfasi = true
                 }label: {
@@ -233,7 +233,7 @@ private extension sıngınUser {
                         açıklama: "Belirli saatlerde kontrollü beslenme"
                     )
                 }
-               
+                
             }
             .padding(16)
             .background(
@@ -254,23 +254,25 @@ private extension sıngınUser {
         .navigationDestination(isPresented: $tumdiet){
             Diyet()
         }
-       
+        
     }
-
+    
     var analizKartı: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             Text("Analiz Alanı")
                 .font(.title3)
                 .fontWeight(.bold)
 
             VStack(alignment: .leading, spacing: 14) {
+
                 HStack {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Son Analizlerin")
                             .font(.headline)
                             .fontWeight(.semibold)
 
-                        Text("Yaptığın yemek analizlerini incele, sonuçlarını karşılaştır ve gelişimini takip et.")
+                        Text("Yaptığın yemek analizlerini incele...")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -282,9 +284,7 @@ private extension sıngınUser {
                         .foregroundColor(.green)
                 }
 
-                Button {
-                    print("Analiz detayına git")
-                } label: {
+                NavigationLink(destination: analizNavbar()) {
                     HStack {
                         Text("Analizlerime Git")
                             .fontWeight(.semibold)
@@ -304,7 +304,10 @@ private extension sıngınUser {
             .background(
                 RoundedRectangle(cornerRadius: 24)
                     .fill(Color(.systemBackground))
-                    .shadow(color: .black.opacity(0.06), radius: 12, x: 0, y: 6)
+                    .shadow(color: .black.opacity(0.06),
+                            radius: 12,
+                            x: 0,
+                            y: 6)
             )
         }
     }
