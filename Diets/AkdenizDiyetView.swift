@@ -8,54 +8,96 @@
 import SwiftUI
 
 struct AkdenizDiyetView: View {
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-
+        
+        ScrollView(showsIndicators: false) {
+            
+            VStack(alignment: .leading, spacing: 24) {
+                
                 Image("diyet2")
                     .resizable()
-                    .scaledToFit()
-                    .cornerRadius(20)
-                    .frame(width: 390, height: 390)
+                    .scaledToFill()
+                    .frame(height: 350)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .cornerRadius(30)
+                    .shadow(
+                        color: .black.opacity(0.15),
+                        radius: 10,
+                        x: 0,
+                        y: 6
+                    )
+                
+                VStack(alignment: .leading, spacing: 20) {
                     
-
-                Text("Akdeniz Diyeti")
-                    .font(.largeTitle)
-                    .bold()
-
-                Text("""
+                    VStack(alignment: .leading, spacing: 8) {
+                        
+                        Text("Akdeniz Diyeti")
+                            .font(.system(size: 34, weight: .bold))
+                        
+                        HStack(spacing: 10) {
+                            
+                            Label(
+                                "Dengeli Beslenme",
+                                systemImage: "leaf.fill"
+                            )
+                            
+                            Label(
+                                "Kalp Dostu",
+                                systemImage: "heart.fill"
+                            )
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    }
+                    
+                    InfoCard(
+                        title: "Hakkında",
+                        icon: "fork.knife",
+                        content:
+"""
 Akdeniz diyeti, geleneksel Akdeniz ülkelerinin beslenme alışkanlıklarını temel alan sağlıklı ve dengeli bir diyet modelidir. Zeytinyağı, sebze, meyve, balık ve tam tahıllar bu diyetin temelini oluşturur.
 
 Uzun vadede kalp-damar hastalıkları riskini azaltır, yaşam kalitesini artırır ve sürdürülebilir bir beslenme sunar.
-""")
-                .lineSpacing(8)
-
-                Divider()
-
-                Text("Neler Tüketilir?")
-                    .font(.headline)
-
-                Text("""
+"""
+                    )
+                    
+                    InfoCard(
+                        title: "Neler Tüketilir?",
+                        icon: "list.bullet",
+                        content:
+"""
 • Zeytinyağı
 • Sebze ve meyveler
 • Balık ve deniz ürünleri
 • Tam tahıllar
 • Kuruyemişler
-""")
-
-                Divider()
-
-                Text("Kimler İçin Uygun Değildir?")
-                    .font(.headline)
-
-                Text("""
+"""
+                    )
+                    
+                    InfoCard(
+                        title: "Kimler İçin Uygun Değildir?",
+                        icon: "exclamationmark.triangle.fill",
+                        content:
+"""
 Genel olarak her yaş grubu için uygundur. Ancak gıda alerjisi olan bireyler dikkatli olmalıdır.
-""")
+"""
+                    )
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
             }
-            .padding()
         }
+        .background(Color(.systemGroupedBackground))
+        .ignoresSafeArea(edges: .top)
         .navigationTitle("Akdeniz Diyeti")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
+#Preview {
+    NavigationStack {
+        AkdenizDiyetView()
+    }
+}

@@ -2,56 +2,99 @@
 //  AralikliOrucView.swift
 //  AkıllıTabak
 //
-//  Created by BAHAR ATBAŞ on 28.01.2026.
-//
+
 import SwiftUI
 
 struct AralikliOrucView: View {
+
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+
+        ScrollView(showsIndicators: false) {
+
+            VStack(alignment: .leading, spacing: 24) {
 
                 Image("diyet3")
                     .resizable()
-                    .scaledToFit()
-                    .cornerRadius(20)
-                    .frame(width: 390, height: 390)
+                    .scaledToFill()
+                    .frame(height: 350)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .cornerRadius(30)
+                    .shadow(
+                        color: .black.opacity(0.15),
+                        radius: 10,
+                        x: 0,
+                        y: 6
+                    )
 
-                Text("Aralıklı Oruç")
-                    .font(.largeTitle)
-                    .bold()
+                VStack(alignment: .leading, spacing: 20) {
 
-                Text("""
+                    VStack(alignment: .leading, spacing: 8) {
+
+                        Text("Aralıklı Oruç")
+                            .font(.system(size: 34, weight: .bold))
+
+                        HStack(spacing: 10) {
+
+                            Label(
+                                "16:8 Metodu",
+                                systemImage: "clock.fill"
+                            )
+
+                            Label(
+                                "Kilo Kontrolü",
+                                systemImage: "scalemass.fill"
+                            )
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    }
+
+                    InfoCard(
+                        title: "Hakkında",
+                        icon: "fork.knife",
+                        content:
+"""
 Aralıklı oruç, günün belirli saatlerinde yemek yemeyi, kalan saatlerde ise kalori alımını durdurmayı esas alır. En yaygın yöntemler 16:8 ve 18:6 sistemleridir.
 
 Bu yöntem insülin hassasiyetini artırabilir ve kilo kontrolüne yardımcı olabilir.
-""")
-                .lineSpacing(8)
+"""
+                    )
 
-                Divider()
-
-                Text("Neler Tüketilir?")
-                    .font(.headline)
-
-                Text("""
+                    InfoCard(
+                        title: "Neler Tüketilir?",
+                        icon: "list.bullet",
+                        content:
+"""
 • Protein ağırlıklı öğünler
 • Sebzeler
 • Sağlıklı yağlar
 • Bol su
-""")
+"""
+                    )
 
-                Divider()
-
-                Text("Kimler İçin Uygun Değildir?")
-                    .font(.headline)
-
-                Text("""
+                    InfoCard(
+                        title: "Kimler İçin Uygun Değildir?",
+                        icon: "exclamationmark.triangle.fill",
+                        content:
+"""
 Hamileler, yeme bozukluğu geçmişi olanlar ve diyabet hastaları için uygun değildir.
-""")
+"""
+                    )
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
             }
-            .padding()
         }
+        .background(Color(.systemGroupedBackground))
+        .ignoresSafeArea(edges: .top)
         .navigationTitle("Aralıklı Oruç")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        AralikliOrucView()
     }
 }

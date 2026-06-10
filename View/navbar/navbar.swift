@@ -14,7 +14,7 @@ struct Navbar: View {
                 }
                 .tabItem {
                     Image(systemName: "house")
-                    Text("Anasayfa")
+                    Text("home_title")
                 }
                 .tag(0)
 
