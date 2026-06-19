@@ -105,6 +105,11 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		82F83FF82FDB367600D9B108 /* Accuracy */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Accuracy;
+			sourceTree = "<group>";
+		};
 		82FFF9502F43B232000FD844 /* Recipes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Recipes;
@@ -148,6 +153,7 @@
 		8266D4D62E9EBB2C007F6972 = {
 			isa = PBXGroup;
 			children = (
+				82F83FF82FDB367600D9B108 /* Accuracy */,
 				822E122F2FBA1F590049408E /* Utilities */,
 				8245D0652FB878FC006125D2 /* HealtySummary */,
 				82E4A2E32F941C3A0014C28A /* FoodClassifier.mlpackage */,
@@ -207,6 +213,7 @@
 				82E586A22E9FF8510056BCB5 /* Data */,
 				82E586A32E9FF8580056BCB5 /* View */,
 				82E586A52E9FF8DE0056BCB5 /* App */,
+				82F83FF82FDB367600D9B108 /* Accuracy */,
 				82FFF9502F43B232000FD844 /* Recipes */,
 				82FFF9552F43B879000FD844 /* Doctors */,
 			);

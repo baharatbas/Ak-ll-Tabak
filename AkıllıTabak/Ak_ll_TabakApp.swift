@@ -21,11 +21,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Ak_ll_TabakApp: App {
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authViewModel)
+                .environmentObject(profileViewModel)
         }
         .modelContainer(for: MealAnalysisRecord.self)
     }

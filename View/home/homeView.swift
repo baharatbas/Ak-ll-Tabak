@@ -12,6 +12,7 @@ enum CategoryType: Identifiable {
 
 struct HomeView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
+    @EnvironmentObject private var profileViewModel: ProfileViewModel
     @State private var selectedCategory: CategoryType?
 
     var body: some View {
@@ -22,10 +23,26 @@ struct HomeView: View {
 
                 // MARK: Header
                 HStack(spacing: 15) {
-                    Image("profile1")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
+                    Group {
+                        if let image = profileViewModel.image() {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                        } else {
+                            ZStack {
+                                Circle()
+                                    .fill(Color(.systemGray5))
+
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding(8)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
 
                     VStack(alignment: .leading) {
                         Text("Merhaba")
@@ -38,19 +55,6 @@ struct HomeView: View {
 
                     Spacer()
 
-                    Image(systemName: "bell")
-                        .font(.title3)
-                }
-                .padding(.horizontal)
-
-
-                // MARK: Search + Assistant
-                HStack {
-                    TextField("Describe your food", text: .constant(""))
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(15)
-
                     NavigationLink {
                         ChatBotView()
                     } label: {
@@ -61,10 +65,11 @@ struct HomeView: View {
                         .padding()
                         .background(Color.black)
                         .foregroundColor(.white)
-                        .cornerRadius(15)
+                        .cornerRadius(40)
                     }
                 }
                 .padding(.horizontal)
+
 
 
                 // MARK: Categories
@@ -75,8 +80,8 @@ struct HomeView: View {
 
                     Spacer()
 
-                    Text("See all")
-                        .foregroundColor(.gray)
+                   /* Text("See all")
+                        .foregroundColor(.gray)*/
                 }
                 .padding(.horizontal)
 
@@ -113,7 +118,7 @@ struct HomeView: View {
                             CategoryItem(name: "Drink", imageName: "drink1")
                         }
                     }
-                    .buttonStyle(.plain)
+                   // .buttonStyle(.plain)
                     .padding(.horizontal)
                 }
 

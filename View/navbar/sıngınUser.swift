@@ -4,6 +4,7 @@ import PhotosUI
 
 struct sıngınUser: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
+    @EnvironmentObject private var profileViewModel: ProfileViewModel
 
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var selectedPhotoData: Data?
@@ -80,8 +81,7 @@ private extension sıngınUser {
                 ) {
                     ZStack(alignment: .bottomTrailing) {
                         Group {
-                            if let selectedPhotoData,
-                               let uiImage = UIImage(data: selectedPhotoData) {
+                            if let uiImage = profileViewModel.image() {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .scaledToFill()
@@ -121,10 +121,15 @@ private extension sıngınUser {
                     Task {
                         if let data = try? await newItem?.loadTransferable(type: Data.self) {
                             await MainActor.run {
-                                selectedPhotoData = data
+                                let userKey = authViewModel.displayName.isEmpty ? "defaultUser" : authViewModel.displayName
+                                profileViewModel.saveProfileImage(data, for: userKey)
                             }
                         }
                     }
+                }
+                .onAppear {
+                    let userKey = authViewModel.displayName.isEmpty ? "defaultUser" : authViewModel.displayName
+                    profileViewModel.loadProfileImage(for: userKey)
                 }
             }
             
@@ -367,12 +372,18 @@ private extension sıngınUser {
 
     var çıkışButonu: some View {
         Button {
+
+            profileViewModel.clearProfileImage()
+
             Task {
                 await authViewModel.logout()
             }
+
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: "rectangle.portrait.and.arrow.right")
+                    .font(.headline)
+
                 Text("Çıkış Yap")
                     .fontWeight(.semibold)
             }

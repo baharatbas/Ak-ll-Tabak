@@ -29,7 +29,7 @@ struct meatAI: View {
                     VStack(spacing: 24) {
                         ustKart
                         ozellikKartlari
-                        kameraKart
+                        //kameraKart
                         gorselAlanKart
                     }
                     .padding(.horizontal, 20)
@@ -37,10 +37,9 @@ struct meatAI: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            // ← YENİ EKLENDİ: Analiz sayfasına geçiş
+
             .navigationDestination(isPresented: $analizeSayfa) {
-                analizeGonder(gorsel: secilenGorsel)
-                    .navigationTitle("Analiz")
+                FoodAccuracyView(gorsel: secilenGorsel)
             }
             .sheet(isPresented: $pickerAcik) {
                 ImagePickerView(
@@ -148,7 +147,7 @@ struct meatAI: View {
         }
     }
 
-    private var kameraKart: some View {
+   /* private var kameraKart: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Nasıl çalışır?")
                 .font(.title3.bold())
@@ -164,7 +163,7 @@ struct meatAI: View {
         .padding(20)
         .background(Color.gray.opacity(0.35))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-    }
+    }*/
 
     private var gorselAlanKart: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -221,11 +220,11 @@ struct meatAI: View {
                 }
 
                 Button {
-                    analizeGonderAction()  // ← GÜNCELLENDİ
+                    analizeSayfa = true  // ← GÜNCELLENDİ
                 } label: {
                     HStack {
                         Image(systemName: "sparkles")
-                        Text("Analize Gönder")
+                        Text("Yemekleri Doğrula")
                             .fontWeight(.semibold)
                     }
                     .frame(maxWidth: .infinity)

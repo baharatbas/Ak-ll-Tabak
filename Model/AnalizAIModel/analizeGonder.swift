@@ -86,7 +86,7 @@ struct analizeGonder: View {
                     .frame(height: 240)
                     .overlay {
                         VStack(spacing: 10) {
-                            Image(systemName: "photo.slash")
+                            Image(systemName: "photo.on.rectangle")
                                 .font(.system(size: 36))
                                 .foregroundStyle(.white.opacity(0.4))
                             Text("Görsel bulunamadı")
